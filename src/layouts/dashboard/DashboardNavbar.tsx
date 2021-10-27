@@ -37,7 +37,7 @@ const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 interface DashboardNavbarProps {
-  onOpenSidebar(): void;
+  onOpenSidebar?: () => void;
 }
 
 export default function DashboardNavbar({ onOpenSidebar }: DashboardNavbarProps) {
