@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom';
 // material
 import { styled } from '@mui/material';
+import DashboardNavbar from './dashboard/DashboardNavbar';
 //
-import DashboardNavbar from './DashboardNavbar';
 
 // ----------------------------------------------------------------------
 
@@ -18,18 +18,18 @@ const RootStyle = styled('div')({
 const MainStyle = styled('div')(({ theme }) => ({
   flexGrow: 1,
   overflow: 'auto',
-  minHeight: '100%',
-  paddingTop: APP_BAR_MOBILE + 24,
+  position: 'relative',
+  top: APP_BAR_MOBILE + 1,
+  minHeight: `calc(100vh - ${APP_BAR_MOBILE + 1}px)`,
   [theme.breakpoints.up('lg')]: {
-    paddingTop: APP_BAR_DESKTOP + 24,
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(2)
+    top: APP_BAR_DESKTOP + 1,
+    minHeight: `calc(100vh - ${APP_BAR_DESKTOP + 1}px)`
   }
 }));
 
 // ----------------------------------------------------------------------
 
-export default function DashboardLayout() {
+export default function ChatLayout() {
   return (
     <RootStyle>
       <DashboardNavbar />

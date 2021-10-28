@@ -1,8 +1,8 @@
 import { Navigate, useRoutes } from 'react-router-dom';
 // layouts
-import DashboardLayout from './layouts/dashboard';
 import LogoOnlyLayout from './layouts/LogoOnlyLayout';
-//
+import ChatLayout from './layouts/ChatLayout';
+// pages
 import Login from './pages/Login';
 import Register from './pages/Register';
 import NotFound from './pages/Page404';
@@ -14,7 +14,7 @@ export default function Router() {
   return useRoutes([
     {
       path: '/dashboard',
-      element: <DashboardLayout />,
+      element: <ChatLayout />,
       children: [
         { path: '/', element: <Navigate to="/dashboard/chat" replace /> },
         { path: 'chat', element: <Chat /> },
