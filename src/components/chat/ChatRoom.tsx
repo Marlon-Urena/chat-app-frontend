@@ -6,12 +6,12 @@ import arrowIosForwardFill from '@iconify/icons-eva/arrow-ios-forward-fill';
 import { useTheme, styled } from '@mui/material/styles';
 import { Box, Drawer, Divider, IconButton, useMediaQuery } from '@mui/material';
 // components
-import { MHidden } from '../../@material-extend';
+import { MHidden } from '../@material-extend';
 //
 import ChatRoomAttachment from './ChatRoomAttachment';
 import ChatRoomOneParticipant from './ChatRoomOneParticipant';
 import ChatRoomGroupParticipant from './ChatRoomGroupParticipant';
-import { Conversation, Contact } from '../../../store/chat/types';
+import { Conversation, Contact } from '../../store/chat/types';
 
 // ----------------------------------------------------------------------
 

@@ -8,11 +8,11 @@ import arrowIosForwardFill from '@iconify/icons-eva/arrow-ios-forward-fill';
 import { styled } from '@mui/material/styles';
 import { Box, Link, Avatar, Typography, AvatarGroup } from '@mui/material';
 // utils
-import { fToNow } from '../../../utils/formatTime';
+import { fToNow } from '../../utils/formatTime';
 //
-import BadgeStatus from '../../BadgeStatus';
-import { Contact } from '../../../store/chat/types';
-import { MIconButton } from '../../@material-extend';
+import BadgeStatus from '../BadgeStatus';
+import { Contact } from '../../store/chat/types';
+import { MIconButton } from '../@material-extend';
 
 // ----------------------------------------------------------------------
 

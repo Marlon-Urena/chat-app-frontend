@@ -22,8 +22,8 @@ import {
 } from '@mui/material';
 
 //
-import MyAvatar from '../../MyAvatar';
-import BadgeStatus from '../../BadgeStatus';
+import MyAvatar from '../MyAvatar';
+import BadgeStatus from '../BadgeStatus';
 
 // ----------------------------------------------------------------------
 

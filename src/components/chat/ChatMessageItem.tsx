@@ -2,7 +2,7 @@ import { formatDistanceToNowStrict } from 'date-fns';
 // material
 import { styled } from '@mui/material/styles';
 import { Avatar, Box, Typography } from '@mui/material';
-import { Conversation, Message } from '../../../store/chat/types';
+import { Conversation, Message } from '../../store/chat/types';
 
 // ----------------------------------------------------------------------
 

@@ -8,8 +8,8 @@ import {
   ListItemButton
 } from '@mui/material';
 //
-import SearchNotFound from '../../SearchNotFound';
-import { Contact } from '../../../store/chat/types';
+import SearchNotFound from '../SearchNotFound';
+import { Contact } from '../../store/chat/types';
 
 // ----------------------------------------------------------------------
 

@@ -9,7 +9,7 @@ import roundAddPhotoAlternate from '@iconify/icons-ic/round-add-photo-alternate'
 import { styled } from '@mui/material/styles';
 import { Input, Divider, IconButton, Stack } from '@mui/material';
 //
-import { NewMessage } from '../../../store/chat/types';
+import { NewMessage } from '../../store/chat/types';
 
 // ----------------------------------------------------------------------
 

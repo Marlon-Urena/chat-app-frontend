@@ -6,8 +6,8 @@ import emailFill from '@iconify/icons-eva/email-fill';
 import { styled } from '@mui/material/styles';
 import { Avatar, Typography, DialogContent } from '@mui/material';
 //
-import { DialogAnimate } from '../../animate';
-import { Contact } from '../../../store/chat/types';
+import { DialogAnimate } from '../animate';
+import { Contact } from '../../store/chat/types';
 
 // ----------------------------------------------------------------------
 

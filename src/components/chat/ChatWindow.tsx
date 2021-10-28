@@ -3,7 +3,7 @@ import { useNavigate, useParams, useLocation } from 'react-router-dom';
 // material
 import { Box, Divider, Stack } from '@mui/material';
 // store
-import { RootState, useAppDispatch, useAppSelector } from '../../../store/store';
+import { RootState, useAppDispatch, useAppSelector } from '../../store/store';
 import {
   addRecipients,
   onSendMessage,
@@ -11,14 +11,14 @@ import {
   getParticipants,
   markConversationAsRead,
   resetActiveConversation
-} from '../../../store/chat/reducer';
+} from '../../store/chat/reducer';
 //
 import ChatRoom from './ChatRoom';
 import ChatMessageList from './ChatMessageList';
 import ChatHeaderDetail from './ChatHeaderDetail';
 import ChatMessageInput from './ChatMessageInput';
 import ChatHeaderCompose from './ChatHeaderCompose';
-import { Contact, NewMessage } from '../../../store/chat/types';
+import { Contact, NewMessage } from '../../store/chat/types';
 
 // ----------------------------------------------------------------------
 

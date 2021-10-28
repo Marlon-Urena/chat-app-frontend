@@ -5,7 +5,7 @@ import { List, Theme } from '@mui/material';
 import { SxProps } from '@mui/system';
 //
 import ChatConversationItem from './ChatConversationItem';
-import { ConversationState } from '../../../store/chat/conversation.entity';
+import { ConversationState } from '../../store/chat/conversation.entity';
 
 // ----------------------------------------------------------------------
 

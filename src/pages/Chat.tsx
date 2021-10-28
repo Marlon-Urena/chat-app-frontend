@@ -4,8 +4,8 @@ import { styled } from '@mui/material/styles';
 // components
 import { useEffect } from 'react';
 import Page from '../components/Page';
-import ChatWindow from '../components/_dashboard/chat/ChatWindow';
-import ChatSidebar from '../components/_dashboard/chat/ChatSidebar';
+import ChatWindow from '../components/chat/ChatWindow';
+import ChatSidebar from '../components/chat/ChatSidebar';
 // store
 import { useAppDispatch } from '../store/store';
 import { getContacts, getConversations } from '../store/chat/reducer';

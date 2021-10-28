@@ -9,13 +9,13 @@ import arrowIosForwardFill from '@iconify/icons-eva/arrow-ios-forward-fill';
 import { styled, useTheme } from '@mui/material/styles';
 import { Box, Drawer, IconButton, Stack, useMediaQuery } from '@mui/material';
 // store
-import { useAppSelector } from '../../../store/store';
+import { useAppSelector } from '../../store/store';
 // utils
-import axios from '../../../utils/axios';
-import { Contact } from '../../../store/chat/types';
+import axios from '../../utils/axios';
+import { Contact } from '../../store/chat/types';
 //
-import { MHidden, MIconButton } from '../../@material-extend';
-import Scrollbar from '../../Scrollbar';
+import { MHidden, MIconButton } from '../@material-extend';
+import Scrollbar from '../Scrollbar';
 import ChatAccount from './ChatAccount';
 import ChatSearchResults from './ChatSearchResults';
 import ChatContactSearch from './ChatContactSearch';

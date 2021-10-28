@@ -7,8 +7,8 @@ import checkmarkFill from '@iconify/icons-eva/checkmark-fill';
 import { alpha, styled } from '@mui/material/styles';
 import { Box, Avatar, TextField, Typography, Autocomplete, Chip } from '@mui/material';
 //
-import SearchNotFound from '../../SearchNotFound';
-import { Contact } from '../../../store/chat/types';
+import SearchNotFound from '../SearchNotFound';
+import { Contact } from '../../store/chat/types';
 
 // ----------------------------------------------------------------------
 

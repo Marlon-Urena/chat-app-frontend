@@ -14,10 +14,10 @@ import {
   ListItemButton
 } from '@mui/material';
 //
-import Scrollbar from '../../Scrollbar';
-import BadgeStatus from '../../BadgeStatus';
+import Scrollbar from '../Scrollbar';
+import BadgeStatus from '../BadgeStatus';
 import ChatRoomPopup from './ChatRoomPopup';
-import { Contact } from '../../../store/chat/types';
+import { Contact } from '../../store/chat/types';
 
 // ----------------------------------------------------------------------
 

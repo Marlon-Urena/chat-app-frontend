@@ -6,11 +6,11 @@ import arrowIosDownwardFill from '@iconify/icons-eva/arrow-ios-downward-fill';
 import { alpha, styled } from '@mui/material/styles';
 import { Box, Button, Divider, Collapse, Typography } from '@mui/material';
 // utils
-import { fDateTime } from '../../../utils/formatTime';
-import { getFileFullName, getFileThumb } from '../../../utils/getFileFormat';
+import { fDateTime } from '../../utils/formatTime';
+import { getFileFullName, getFileThumb } from '../../utils/getFileFormat';
 //
-import Scrollbar from '../../Scrollbar';
-import { Conversation, Message } from '../../../store/chat/types';
+import Scrollbar from '../Scrollbar';
+import { Conversation, Message } from '../../store/chat/types';
 
 // ----------------------------------------------------------------------
 

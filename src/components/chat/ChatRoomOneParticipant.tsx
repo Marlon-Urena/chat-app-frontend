@@ -7,7 +7,7 @@ import arrowIosDownwardFill from '@iconify/icons-eva/arrow-ios-downward-fill';
 // material
 import { styled } from '@mui/material/styles';
 import { Box, Avatar, Button, Divider, Collapse, Typography, Stack } from '@mui/material';
-import { Contact } from '../../../store/chat/types';
+import { Contact } from '../../store/chat/types';
 
 // ----------------------------------------------------------------------
 

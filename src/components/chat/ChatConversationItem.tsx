@@ -4,8 +4,8 @@ import { formatDistanceToNowStrict } from 'date-fns';
 import { styled } from '@mui/material/styles';
 import { Box, Avatar, ListItemText, ListItemAvatar, ListItemButton } from '@mui/material';
 //
-import BadgeStatus from '../../BadgeStatus';
-import { Conversation } from '../../../store/chat/types';
+import BadgeStatus from '../BadgeStatus';
+import { Conversation } from '../../store/chat/types';
 
 // ----------------------------------------------------------------------
 

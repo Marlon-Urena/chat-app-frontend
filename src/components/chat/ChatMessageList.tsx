@@ -1,10 +1,10 @@
 import { findIndex } from 'lodash';
 import { useEffect, useState, useRef } from 'react';
 //
-import Scrollbar from '../../Scrollbar';
-import LightboxModal from '../../LightboxModal';
+import Scrollbar from '../Scrollbar';
+import LightboxModal from '../LightboxModal';
 import ChatMessageItem from './ChatMessageItem';
-import { Conversation } from '../../../store/chat/types';
+import { Conversation } from '../../store/chat/types';
 
 // ----------------------------------------------------------------------
 
