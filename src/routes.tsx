@@ -1,16 +1,12 @@
 import { Navigate, useRoutes } from 'react-router-dom';
 // layouts
-import DashboardLayout from './layouts/dashboard';
 import LogoOnlyLayout from './layouts/LogoOnlyLayout';
-//
+import ChatLayout from './layouts/ChatLayout';
+// pages
 import Login from './pages/Login';
 import Register from './pages/Register';
-import DashboardApp from './pages/DashboardApp';
-import Products from './pages/Products';
-import Blog from './pages/Blog';
-import User from './pages/User';
 import NotFound from './pages/Page404';
-import Chat from './layouts/dashboard/Chat';
+import Chat from './pages/Chat';
 
 // ----------------------------------------------------------------------
 
@@ -18,13 +14,9 @@ export default function Router() {
   return useRoutes([
     {
       path: '/dashboard',
-      element: <DashboardLayout />,
+      element: <ChatLayout />,
       children: [
-        { path: '/', element: <Navigate to="/dashboard/app" replace /> },
-        { path: 'app', element: <DashboardApp /> },
-        { path: 'user', element: <User /> },
-        { path: 'products', element: <Products /> },
-        { path: 'blog', element: <Blog /> },
+        { path: '/', element: <Navigate to="/dashboard/chat" replace /> },
         { path: 'chat', element: <Chat /> },
         { path: 'chat/:conversationKey', element: <Chat /> }
       ]
