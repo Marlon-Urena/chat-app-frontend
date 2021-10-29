@@ -7,7 +7,7 @@ import arrowIosBackFill from '@iconify/icons-eva/arrow-ios-back-fill';
 import arrowIosForwardFill from '@iconify/icons-eva/arrow-ios-forward-fill';
 // material
 import { styled, useTheme } from '@mui/material/styles';
-import { Box, Drawer, IconButton, Stack, useMediaQuery } from '@mui/material';
+import { Box, Drawer, IconButton, Stack, Typography, useMediaQuery } from '@mui/material';
 // store
 import { useAppSelector } from '../../store/store';
 // utils
@@ -16,7 +16,6 @@ import { Contact } from '../../store/chat/types';
 //
 import { MHidden, MIconButton } from '../@material-extend';
 import Scrollbar from '../Scrollbar';
-import ChatAccount from './ChatAccount';
 import ChatSearchResults from './ChatSearchResults';
 import ChatContactSearch from './ChatContactSearch';
 import ChatConversationList from './ChatConversationList';
@@ -138,7 +137,7 @@ export default function ChatSidebar() {
         <Stack direction="row" alignItems="center" justifyContent="center">
           {!isCollapse && (
             <>
-              <ChatAccount />
+              <Typography variant="h3">Chat</Typography>
               <Box sx={{ flexGrow: 1 }} />
             </>
           )}

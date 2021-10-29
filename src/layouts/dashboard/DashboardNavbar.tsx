@@ -1,13 +1,14 @@
 import { Icon } from '@iconify/react';
 import menu2Fill from '@iconify/icons-eva/menu-2-fill';
+import messageCircleFill from '@iconify/icons-eva/message-circle-fill';
 // material
 import { alpha, AppBar, Box, IconButton, Stack, styled, Toolbar } from '@mui/material';
 // components
+import { Link as RouterLink } from 'react-router-dom';
 import { MHidden } from '../../components/@material-extend';
 //
 import AccountPopover from './AccountPopover';
 import LanguagePopover from './LanguagePopover';
-import NotificationsPopover from './NotificationsPopover';
 
 // ----------------------------------------------------------------------
 
@@ -50,7 +51,9 @@ export default function DashboardNavbar({ onOpenSidebar }: DashboardNavbarProps)
           <Box sx={{ flexGrow: 1 }} />
           <Stack direction="row" alignItems="center" spacing={{ xs: 0.5, sm: 1.5 }}>
             <LanguagePopover />
-            <NotificationsPopover />
+            <IconButton to="/dashboard/chat" component={RouterLink} size="large">
+              <Icon color="green" icon={messageCircleFill} width={20} height={20} />
+            </IconButton>
             <AccountPopover />
           </Stack>
         </ToolbarStyle>
