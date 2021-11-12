@@ -250,7 +250,6 @@ export default function NotificationsPopover() {
               <NotificationItem key={notification.id} notification={notification} />
             ))}
           </List>
-
           <List
             disablePadding
             subheader={

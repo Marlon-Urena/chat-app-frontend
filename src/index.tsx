@@ -7,6 +7,7 @@ import { HelmetProvider } from 'react-helmet-async';
 
 //
 import { Provider } from 'react-redux';
+import { SnackbarProvider } from 'notistack';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import reportWebVitals from './reportWebVitals';
@@ -16,11 +17,13 @@ import store from './store/store';
 
 ReactDOM.render(
   <Provider store={store}>
-    <HelmetProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </HelmetProvider>
+    <SnackbarProvider maxSnack={3}>
+      <HelmetProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </HelmetProvider>
+    </SnackbarProvider>
   </Provider>,
   document.getElementById('root')
 );
