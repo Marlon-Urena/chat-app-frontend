@@ -29,7 +29,7 @@ const MainStyle = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function ChatLayout() {
+export default function AppLayout() {
   return (
     <RootStyle>
       <DashboardNavbar />

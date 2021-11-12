@@ -110,7 +110,7 @@ export default function AccountPopover() {
         </MenuItem>
         <MenuItem
           key="Settings"
-          to="#"
+          to="/dashboard/account"
           component={RouterLink}
           onClick={handleClose}
           sx={{ typography: 'body2', py: 1, px: 2.5 }}
