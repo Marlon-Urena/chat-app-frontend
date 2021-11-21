@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 import { useSnackbar } from 'notistack';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { Form, FormikProvider, useFormik } from 'formik';
 // material
 import { Box, Grid, Card, Stack, TextField, Typography, FormHelperText } from '@mui/material';
@@ -12,12 +12,22 @@ import { fData } from '../../utils/formatNumber';
 //
 import UploadAvatar from '../upload/UploadAvatar';
 import countries from './countries';
+import { useAppDispatch, useAppSelector } from '../../store/store';
+import { getUser } from '../../store/authentication/thunks';
 
 // ----------------------------------------------------------------------
 
 export default function AccountGeneral() {
   const { enqueueSnackbar } = useSnackbar();
-  const { user, updateProfile } = useAuth();
+  const dispatch = useAppDispatch();
+  const { currentUser } = useAppSelector((state) => state.authentication);
+  const user = useAuth();
+
+  useEffect(() => {
+    if (user) {
+      dispatch(getUser(user));
+    }
+  }, [dispatch, user]);
 
   const UpdateUserSchema = Yup.object().shape({
     displayName: Yup.string().required('Name is required')
@@ -26,21 +36,21 @@ export default function AccountGeneral() {
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      displayName: user.displayName || '',
-      email: user.email,
-      photoURL: user.photoURL,
-      phoneNumber: user.phoneNumber,
-      country: user.country,
-      address: user.address,
-      state: user.state,
-      city: user.city,
-      zipCode: user.zipCode
+      displayName: currentUser?.displayName || '',
+      email: currentUser?.email || '',
+      photoURL: currentUser?.photoURL || '',
+      phoneNumber: currentUser?.phoneNumber || '',
+      country: currentUser?.country || '',
+      address: currentUser?.address || '',
+      state: currentUser?.state || '',
+      city: currentUser?.city || '',
+      zipCode: currentUser?.zipCode || ''
     },
 
     validationSchema: UpdateUserSchema,
     onSubmit: async (values, { setSubmitting }) => {
       try {
-        await updateProfile({ ...values });
+        // TODO: add dispatch to update User info
         enqueueSnackbar('Update success', { variant: 'success' });
         setSubmitting(false);
       } catch (error) {

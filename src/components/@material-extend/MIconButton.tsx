@@ -1,9 +1,9 @@
 import { Box, IconButton } from '@mui/material';
-import { ReactNode } from 'react';
+import { ReactNode, ElementType } from 'react';
 
 interface MIconButtonProps {
   to?: string;
-  component?: any;
+  component?: ElementType;
   children?: ReactNode;
   onClick?: () => void;
 }

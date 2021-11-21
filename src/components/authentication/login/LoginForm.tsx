@@ -1,12 +1,13 @@
 import * as Yup from 'yup';
 import { useState } from 'react';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import { useFormik, Form, FormikProvider } from 'formik';
 import { Icon } from '@iconify/react';
 import eyeFill from '@iconify/icons-eva/eye-fill';
 import eyeOffFill from '@iconify/icons-eva/eye-off-fill';
 // material
 import {
+  Alert,
   Checkbox,
   FormControlLabel,
   IconButton,
@@ -16,12 +17,17 @@ import {
   TextField
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
+import { useAppDispatch, useAppSelector } from '../../../store/store';
+import { login } from '../../../store/authentication/thunks';
 
 // ----------------------------------------------------------------------
 
+// TODO: Connect functionality for .firebase auth
+
 export default function LoginForm() {
-  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useAppDispatch();
+  const { error } = useAppSelector((state) => state.authentication);
 
   const LoginSchema = Yup.object().shape({
     email: Yup.string().email('Email must be a valid email address').required('Email is required'),
@@ -35,8 +41,9 @@ export default function LoginForm() {
       remember: true
     },
     validationSchema: LoginSchema,
-    onSubmit: () => {
-      navigate('/dashboard', { replace: true });
+    onSubmit: ({ email, password }, actions) => {
+      dispatch(login({ email, password }));
+      actions.setSubmitting(false);
     }
   });
 
@@ -46,10 +53,24 @@ export default function LoginForm() {
     setShowPassword((show) => !show);
   };
 
+  const getErrorMessage = () => {
+    let codePosition = error?.message?.length;
+    let message;
+    const code = error?.code;
+    if (code) {
+      codePosition = error?.message?.indexOf(code);
+    }
+    if (codePosition) {
+      message = error?.message?.slice(10, codePosition - 2);
+    }
+    return message ?? 'Incorrect credentials.';
+  };
+
   return (
     <FormikProvider value={formik}>
       <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
         <Stack spacing={3}>
+          {error?.name === 'FirebaseError' && <Alert severity="error">{getErrorMessage()}</Alert>}
           <TextField
             fullWidth
             autoComplete="username"

@@ -127,7 +127,6 @@ const paletteOptions: PaletteOptions = {
   }
 };
 
-// TODO: Make sure Palette colors are not messed up
 const palette = createPalette(paletteOptions);
 
 export default palette;

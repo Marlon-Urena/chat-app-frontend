@@ -12,6 +12,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import reportWebVitals from './reportWebVitals';
 import store from './store/store';
+import { AuthProvider } from './contexts/FirebaseContext';
 
 // ----------------------------------------------------------------------
 
@@ -19,9 +20,11 @@ ReactDOM.render(
   <Provider store={store}>
     <SnackbarProvider maxSnack={3}>
       <HelmetProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <AuthProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </AuthProvider>
       </HelmetProvider>
     </SnackbarProvider>
   </Provider>,

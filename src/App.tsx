@@ -1,5 +1,6 @@
 // routes
-import Router from './routes';
+import { Suspense } from 'react';
+import Router from './routes/routes';
 // theme
 import ThemeConfig from './theme';
 import GlobalStyles from './theme/globalStyles';
@@ -13,7 +14,9 @@ export default function App() {
     <ThemeConfig>
       <ScrollToTop />
       <GlobalStyles />
-      <Router />
+      <Suspense fallback={<></>}>
+        <Router />
+      </Suspense>
     </ThemeConfig>
   );
 }

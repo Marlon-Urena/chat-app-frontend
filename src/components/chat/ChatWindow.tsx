@@ -1,15 +1,15 @@
 import { useEffect } from 'react';
-import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 // material
 import { Box, Divider, Stack } from '@mui/material';
 // store
 import { RootState, useAppDispatch, useAppSelector } from '../../store/store';
 import {
   addRecipients,
-  onSendMessage,
   getConversation,
   getParticipants,
   markConversationAsRead,
+  onSendMessage,
   resetActiveConversation
 } from '../../store/chat/reducer';
 //
@@ -28,14 +28,13 @@ const conversationSelector = (state: RootState) => {
   if (conversation) {
     return conversation;
   }
-  const initState = {
+  return {
     id: '',
     messages: [],
     participants: [],
     unreadCount: 0,
     type: ''
   };
-  return initState;
 };
 
 export default function ChatWindow() {
@@ -54,10 +53,10 @@ export default function ChatWindow() {
   );
 
   useEffect(() => {
-    const getDetails = async () => {
-      dispatch(getParticipants(conversationKey));
+    const getDetails = () => {
+      dispatch(getParticipants(conversationKey ?? ''));
       try {
-        await dispatch(getConversation(conversationKey));
+        dispatch(getConversation(conversationKey ?? ''));
       } catch (error) {
         console.error(error);
         navigate('/dashboard/chat/new');
@@ -68,7 +67,7 @@ export default function ChatWindow() {
     } else if (activeConversationId) {
       dispatch(resetActiveConversation());
     }
-  }, [conversationKey]);
+  }, [conversationKey, activeConversationId, dispatch, navigate]);
 
   useEffect(() => {
     if (activeConversationId) {

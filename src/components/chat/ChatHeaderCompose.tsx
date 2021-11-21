@@ -59,7 +59,7 @@ export default function ChatHeaderCompose({
     setQuery(value);
   };
 
-  const handleAddRecipients = (event: any, newRecipients: Contact[]) => {
+  const handleAddRecipients = (event: SyntheticEvent, newRecipients: Contact[]) => {
     setQuery('');
     onAddRecipients(newRecipients);
   };
