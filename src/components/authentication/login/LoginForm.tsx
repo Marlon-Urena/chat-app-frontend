@@ -22,8 +22,6 @@ import { login } from '../../../store/authentication/thunks';
 
 // ----------------------------------------------------------------------
 
-// TODO: Connect functionality for .firebase auth
-
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useAppDispatch();
