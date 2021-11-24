@@ -24,6 +24,7 @@ import { login } from '../../../store/authentication/thunks';
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
+
   const dispatch = useAppDispatch();
   const { error } = useAppSelector((state) => state.authentication);
 
@@ -36,11 +37,11 @@ export default function LoginForm() {
     initialValues: {
       email: '',
       password: '',
-      remember: true
+      remember: false
     },
     validationSchema: LoginSchema,
-    onSubmit: ({ email, password }, actions) => {
-      dispatch(login({ email, password }));
+    onSubmit: (values, actions) => {
+      dispatch(login(values));
       actions.setSubmitting(false);
     }
   });
