@@ -21,6 +21,8 @@ import MenuPopover from '../../components/MenuPopover';
 import BadgeStatus from '../../components/BadgeStatus';
 // mocks
 import account from '../../_mocks_/account';
+import { useAppDispatch } from '../../store/store';
+import { logout } from '../../store/authentication/thunks';
 
 // ----------------------------------------------------------------------
 
@@ -30,6 +32,7 @@ export default function AccountPopover() {
   const anchorRef = useRef(null);
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState('online');
+  const dispatch = useAppDispatch();
 
   const handleOpen = () => {
     setOpen(true);
@@ -39,6 +42,9 @@ export default function AccountPopover() {
   };
   const handleChangeStatus = (event: SelectChangeEvent) => {
     setStatus(event.target.value);
+  };
+  const handleLogout = () => {
+    dispatch(logout());
   };
 
   return (
@@ -127,7 +133,7 @@ export default function AccountPopover() {
           Settings
         </MenuItem>
         <Box sx={{ p: 2, pt: 1.5 }}>
-          <Button fullWidth color="inherit" variant="outlined">
+          <Button fullWidth color="inherit" variant="outlined" onClick={handleLogout}>
             Logout
           </Button>
         </Box>
