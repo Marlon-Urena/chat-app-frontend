@@ -43,7 +43,7 @@ export default function Register() {
     <RootStyle title="Register | Minimal-UI">
       <AuthLayout>
         Already have an account? &nbsp;
-        <Link underline="none" variant="subtitle2" component={RouterLink} to="/login">
+        <Link underline="none" variant="subtitle2" component={RouterLink} to="/auth/login">
           Login
         </Link>
       </AuthLayout>
@@ -87,7 +87,7 @@ export default function Register() {
           <MHidden width="smUp">
             <Typography variant="subtitle2" sx={{ mt: 3, textAlign: 'center' }}>
               Already have an account?&nbsp;
-              <Link to="/login" component={RouterLink}>
+              <Link to="/auth/login" component={RouterLink}>
                 Login
               </Link>
             </Typography>

@@ -43,7 +43,7 @@ export default function Login() {
     <RootStyle title="Login | Minimal-UI">
       <AuthLayout>
         Don’t have an account? &nbsp;
-        <Link underline="none" variant="subtitle2" component={RouterLink} to="/register">
+        <Link underline="none" variant="subtitle2" component={RouterLink} to="/auth/register">
           Get started
         </Link>
       </AuthLayout>
@@ -72,7 +72,7 @@ export default function Login() {
           <MHidden width="smUp">
             <Typography variant="body2" align="center" sx={{ mt: 3 }}>
               Don’t have an account?&nbsp;
-              <Link variant="subtitle2" component={RouterLink} to="register">
+              <Link variant="subtitle2" component={RouterLink} to="/auth/register">
                 Get started
               </Link>
             </Typography>
