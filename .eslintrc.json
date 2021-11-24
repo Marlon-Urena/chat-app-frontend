@@ -57,6 +57,7 @@
         "@typescript-eslint/no-use-before-define": ["error"],
         "react/jsx-filename-extension": [ "warn", {"extensions": [".tsx"]} ],
         "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["state"] }],
+        "react-hooks/rules-of-hooks": "error",
         "import/extensions": [
             "error",
             "ignorePackages",
@@ -72,8 +73,7 @@
                 "printWidth": 100,
                 "singleQuote": true,
                 "trailingComma": "none",
-                "tabWidth": 2,
-                "endOfLine": "auto"
+                "tabWidth": 2
             }
         ],
         "no-unused-vars": [
