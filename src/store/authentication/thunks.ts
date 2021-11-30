@@ -42,7 +42,7 @@ export const logout = createAsyncThunk('authentication/logout', async () => {
 
 export const register = createAsyncThunk(
   'authentication/register',
-  async (signupDetails: { name: string; password: string; email: string }) => {
+  async (signupDetails: { username: string; email: string; password: string }) => {
     await AuthAPI.createUser(signupDetails);
   }
 );

@@ -5,9 +5,9 @@ import { User } from '../store/authentication/types';
 const authenticationURL = 'http://localhost:8443';
 
 async function createUser(signupDetails: {
-  name: string;
-  password: string;
+  username: string;
   email: string;
+  password: string;
 }): Promise<AxiosResponse> {
   return axios.post(`${authenticationURL}/register`, signupDetails);
 }
