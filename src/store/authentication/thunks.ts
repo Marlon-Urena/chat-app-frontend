@@ -44,6 +44,11 @@ export const register = createAsyncThunk(
   'authentication/register',
   async (signupDetails: { username: string; email: string; password: string }) => {
     await AuthAPI.createUser(signupDetails);
+    return {
+      isAuthenticated: true,
+      checkingSession: false,
+      error: null
+    };
   }
 );
 

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { checkSession, getUser, login, logout } from './thunks';
+import { checkSession, getUser, login, logout, register } from './thunks';
 import { AuthenticationState } from './types';
 
 const initialAuthenticationState: AuthenticationState = {
@@ -28,6 +28,12 @@ const authenticationSlice = createSlice({
     });
     builder.addCase(checkSession.fulfilled, (state, action) => {
       return { ...state, ...action.payload };
+    });
+    builder.addCase(register.fulfilled, (state, action) => {
+      return { ...state, ...action.payload };
+    });
+    builder.addCase(register.rejected, (state, action) => {
+      return { ...state, error: action.error };
     });
   }
 });

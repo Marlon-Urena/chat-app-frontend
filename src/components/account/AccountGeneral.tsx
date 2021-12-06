@@ -30,13 +30,13 @@ export default function AccountGeneral() {
   }, [dispatch, user]);
 
   const UpdateUserSchema = Yup.object().shape({
-    displayName: Yup.string().required('Name is required')
+    username: Yup.string().required('Username is required')
   });
 
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      displayName: currentUser?.displayName || '',
+      username: currentUser?.username || '',
       email: currentUser?.email || '',
       photoURL: currentUser?.photoURL || '',
       phoneNumber: currentUser?.phoneNumber || '',

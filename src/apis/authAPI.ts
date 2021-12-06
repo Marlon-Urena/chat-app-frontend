@@ -15,7 +15,7 @@ async function createUser(signupDetails: {
 async function getUser(): Promise<AxiosResponse<User>> {
   const user = firebase.auth().currentUser;
   return axios.post(`${authenticationURL}/user`, undefined, {
-    headers: { Authorization: `Bearer ${await user!.getIdToken()}` }
+    headers: { Authorization: `Bearer ${await user?.getIdToken()}` }
   });
 }
 
