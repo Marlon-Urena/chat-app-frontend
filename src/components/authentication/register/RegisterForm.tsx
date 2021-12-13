@@ -17,9 +17,20 @@ export default function RegisterForm() {
   const dispatch = useAppDispatch();
 
   const RegisterSchema = Yup.object().shape({
-    username: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Username required'),
+    username: Yup.string()
+      .min(1, 'Username is too short!')
+      .max(30, 'Username is too long!')
+      .matches(/^[a-zA-Z0-9._]+$/, 'Username is not valid.')
+      .required('Username required'),
     email: Yup.string().email('Email must be a valid email address').required('Email is required'),
-    password: Yup.string().required('Password is required')
+    password: Yup.string()
+      .min(8, 'Password is too short!')
+      .max(100, 'Password is too long')
+      .matches(
+        /^(?=.*\d)(?![.])(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z])/,
+        'Password must be at least 8 characters long, contain at least 1 uppercase, 1 lowercase, and 1 number.'
+      )
+      .required('Password is required')
   });
 
   const formik = useFormik({
@@ -34,7 +45,7 @@ export default function RegisterForm() {
     }
   });
 
-  const { errors, touched, handleSubmit, isSubmitting, getFieldProps } = formik;
+  const { errors, touched, handleSubmit, isSubmitting, getFieldProps, isValid } = formik;
 
   return (
     <FormikProvider value={formik}>
@@ -83,6 +94,7 @@ export default function RegisterForm() {
             type="submit"
             variant="contained"
             loading={isSubmitting}
+            disabled={!isValid}
           >
             Register
           </LoadingButton>
