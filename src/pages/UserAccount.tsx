@@ -7,7 +7,7 @@ import roundAccountBox from '@iconify/icons-ic/round-account-box';
 import { Container, Tab, Box, Tabs, Stack } from '@mui/material';
 // components
 import Page from '../components/Page';
-import { AccountGeneral, AccountChangePassword } from '../components/account';
+import { AccountGeneral, AccountSecurity } from '../components/account';
 
 // ----------------------------------------------------------------------
 
@@ -21,9 +21,9 @@ export default function UserAccount() {
       component: <AccountGeneral />
     },
     {
-      value: 'change_password',
+      value: 'security',
       icon: <Icon icon={roundVpnKey} width={20} height={20} />,
-      component: <AccountChangePassword />
+      component: <AccountSecurity />
     }
   ];
 
