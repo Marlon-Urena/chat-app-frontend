@@ -5,9 +5,9 @@ import { useFormik, Form, FormikProvider } from 'formik';
 import eyeFill from '@iconify/icons-eva/eye-fill';
 import eyeOffFill from '@iconify/icons-eva/eye-off-fill';
 // material
-import { IconButton, InputAdornment, Stack, TextField } from '@mui/material';
+import { Alert, IconButton, InputAdornment, Stack, TextField } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
-import { useAppDispatch } from '../../../store/store';
+import { useAppDispatch, useAppSelector } from '../../../store/store';
 import { register } from '../../../store/authentication/thunks';
 
 // ----------------------------------------------------------------------
@@ -15,6 +15,7 @@ import { register } from '../../../store/authentication/thunks';
 export default function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useAppDispatch();
+  const { error } = useAppSelector((state) => state.authentication);
 
   const RegisterSchema = Yup.object().shape({
     username: Yup.string()
@@ -51,6 +52,7 @@ export default function RegisterForm() {
     <FormikProvider value={formik}>
       <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
         <Stack spacing={3}>
+          {error?.name === 'RegisterError' && <Alert severity="error">{error.message}</Alert>}
           <TextField
             fullWidth
             autoComplete="username"
