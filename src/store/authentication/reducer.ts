@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { checkSession, getUser, login, logout, register } from './thunks';
+import { checkSession, getUser, login, logout, register, updateUser } from './thunks';
 import { AuthenticationState } from './types';
 
 const initialAuthenticationState: AuthenticationState = {
@@ -34,6 +34,9 @@ const authenticationSlice = createSlice({
     });
     builder.addCase(register.rejected, (state, action) => {
       return { ...state, error: action.error };
+    });
+    builder.addCase(updateUser.fulfilled, (state, action) => {
+      return { ...state, currentUser: action.payload };
     });
   }
 });

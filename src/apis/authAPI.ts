@@ -20,4 +20,11 @@ async function getUser(): Promise<AxiosResponse<User>> {
   });
 }
 
-export { createUser, getUser };
+async function updateUser(updatedUser: User): Promise<AxiosResponse<User>> {
+  const user = firebase.auth().currentUser;
+  return axios.put(`${userServiceURL}/user`, updatedUser, {
+    headers: { Authorization: `Bearer ${await user?.getIdToken()}` }
+  });
+}
+
+export { createUser, getUser, updateUser };

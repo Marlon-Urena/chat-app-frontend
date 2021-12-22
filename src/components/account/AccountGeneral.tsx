@@ -3,7 +3,17 @@ import { useSnackbar } from 'notistack';
 import { useCallback, useEffect } from 'react';
 import { Form, FormikProvider, useFormik } from 'formik';
 // material
-import { Box, Grid, Card, Stack, TextField, Typography, FormHelperText } from '@mui/material';
+import {
+  Box,
+  Grid,
+  Card,
+  Stack,
+  TextField,
+  Typography,
+  FormHelperText,
+  CardHeader,
+  CardContent
+} from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 // hooks
 import useAuth from '../../hooks/useAuth';
@@ -13,7 +23,7 @@ import { fData } from '../../utils/formatNumber';
 import UploadAvatar from '../upload/UploadAvatar';
 import countries from './countries';
 import { useAppDispatch, useAppSelector } from '../../store/store';
-import { getUser } from '../../store/authentication/thunks';
+import { getUser, updateUser } from '../../store/authentication/thunks';
 
 // ----------------------------------------------------------------------
 
@@ -30,16 +40,20 @@ export default function AccountGeneral() {
   }, [dispatch, user]);
 
   const UpdateUserSchema = Yup.object().shape({
-    username: Yup.string().required('Username is required')
+    firstName: Yup.string(),
+    lastName: Yup.string(),
+    country: Yup.string(),
+    address: Yup.string(),
+    state: Yup.string(),
+    city: Yup.string(),
+    zipCode: Yup.string()
   });
 
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      username: currentUser?.username || '',
-      email: currentUser?.email || '',
-      photoURL: currentUser?.photoURL || '',
-      phoneNumber: currentUser?.phoneNumber || '',
+      firstName: currentUser?.firstName || '',
+      lastName: currentUser?.lastName || '',
       country: currentUser?.country || '',
       address: currentUser?.address || '',
       state: currentUser?.state || '',
@@ -48,19 +62,34 @@ export default function AccountGeneral() {
     },
 
     validationSchema: UpdateUserSchema,
-    onSubmit: async (values, { setSubmitting }) => {
-      try {
-        // TODO: add dispatch to update User info
-        enqueueSnackbar('Update success', { variant: 'success' });
-        setSubmitting(false);
-      } catch (error) {
-        setSubmitting(false);
+    onSubmit: (values, { setSubmitting }) => {
+      if (currentUser) {
+        dispatch(
+          updateUser({
+            username: currentUser.username,
+            email: currentUser.email,
+            ...values
+          })
+        );
       }
+      enqueueSnackbar('Update success', { variant: 'success' });
+      setSubmitting(false);
     }
   });
 
-  const { values, errors, touched, isSubmitting, handleSubmit, getFieldProps, setFieldValue } =
-    formik;
+  const ChangePhotoSchema = Yup.object().shape({
+    photoURL: Yup.string()
+  });
+
+  const photoFormik = useFormik({
+    initialValues: {
+      photoURL: currentUser?.photoURL || ''
+    },
+    validationSchema: ChangePhotoSchema,
+    onSubmit: (values) => {}
+  });
+
+  const { errors, touched, isSubmitting, handleSubmit, getFieldProps, setFieldValue } = formik;
 
   const handleDrop = useCallback(
     (acceptedFiles: File[]) => {
@@ -80,80 +109,93 @@ export default function AccountGeneral() {
       <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={4}>
-            <Card sx={{ py: 10, px: 3, textAlign: 'center' }}>
-              <UploadAvatar
-                accept="image/*"
-                imageFile={values.photoURL}
-                maxSize={3145728}
-                onDrop={handleDrop}
-                error={Boolean(touched.photoURL && errors.photoURL)}
-                caption={
-                  <Typography
-                    variant="caption"
-                    sx={{
-                      mt: 2,
-                      mx: 'auto',
-                      display: 'block',
-                      textAlign: 'center',
-                      color: 'text.secondary'
-                    }}
-                  >
-                    Allowed *.jpeg, *.jpg, *.png, *.gif
-                    <br /> max size of {fData(3145728)}
+            <Card sx={{ textAlign: 'center' }}>
+              <CardHeader
+                title={
+                  <Typography gutterBottom align="left" variant="h4">
+                    Profile Picture
                   </Typography>
                 }
               />
-              <FormHelperText error sx={{ px: 2, textAlign: 'center' }}>
-                {touched.photoURL && errors.photoURL}
-              </FormHelperText>
+              <CardContent>
+                <UploadAvatar
+                  accept="image/*"
+                  imageFile={photoFormik.values.photoURL}
+                  maxSize={3145728}
+                  onDrop={handleDrop}
+                  error={Boolean(photoFormik.touched.photoURL && photoFormik.errors.photoURL)}
+                  caption={
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        mt: 2,
+                        mx: 'auto',
+                        display: 'block',
+                        textAlign: 'center',
+                        color: 'text.secondary'
+                      }}
+                    >
+                      Allowed *.jpeg, *.jpg, *.png, *.gif
+                      <br /> max size of {fData(3145728)}
+                    </Typography>
+                  }
+                />
+                <FormHelperText error sx={{ px: 2, textAlign: 'center' }}>
+                  {photoFormik.touched.photoURL && photoFormik.errors.photoURL}
+                </FormHelperText>
+              </CardContent>
             </Card>
           </Grid>
+          <Grid item xs={12} md={6}>
+            <Card>
+              <CardHeader
+                title={
+                  <Typography gutterBottom align="left" variant="h4">
+                    Personal Information
+                  </Typography>
+                }
+              />
+              <CardContent>
+                <Stack spacing={{ xs: 2, md: 3 }}>
+                  <Stack direction={{ xs: 'column', md: 'row' }} spacing={2}>
+                    <TextField fullWidth label="First Name" {...getFieldProps('firstName')} />
+                    <TextField fullWidth label="Last Name" {...getFieldProps('lastName')} />
+                  </Stack>
+                  <Stack direction={{ xs: 'column', md: 'row' }} spacing={2}>
+                    <TextField fullWidth label="Address" {...getFieldProps('address')} />
+                  </Stack>
+                  <Stack direction={{ xs: 'column', md: 'row' }} spacing={2}>
+                    <TextField
+                      select
+                      fullWidth
+                      label="Country"
+                      placeholder="Country"
+                      {...getFieldProps('country')}
+                      SelectProps={{ native: true }}
+                      error={Boolean(touched.country && errors.country)}
+                      helperText={touched.country && errors.country}
+                    >
+                      <option value="" />
+                      {countries.map((option) => (
+                        <option key={option.code} value={option.label}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </TextField>
+                    <TextField fullWidth label="State/Region" {...getFieldProps('state')} />
+                  </Stack>
 
-          <Grid item xs={12} md={8}>
-            <Card sx={{ p: 3 }}>
-              <Stack spacing={{ xs: 2, md: 3 }}>
-                <Stack direction={{ xs: 'column', md: 'row' }} spacing={2}>
-                  <TextField fullWidth label="Name" {...getFieldProps('displayName')} />
-                  <TextField fullWidth disabled label="Email Address" {...getFieldProps('email')} />
+                  <Stack direction={{ xs: 'column', md: 'row' }} spacing={2}>
+                    <TextField fullWidth label="City" {...getFieldProps('city')} />
+                    <TextField fullWidth label="Zip/Code" {...getFieldProps('zipCode')} />
+                  </Stack>
                 </Stack>
-
-                <Stack direction={{ xs: 'column', md: 'row' }} spacing={2}>
-                  <TextField fullWidth label="Phone Number" {...getFieldProps('phoneNumber')} />
-                  <TextField fullWidth label="Address" {...getFieldProps('address')} />
-                </Stack>
-
-                <Stack direction={{ xs: 'column', md: 'row' }} spacing={2}>
-                  <TextField
-                    select
-                    fullWidth
-                    label="Country"
-                    placeholder="Country"
-                    {...getFieldProps('country')}
-                    SelectProps={{ native: true }}
-                    error={Boolean(touched.country && errors.country)}
-                    helperText={touched.country && errors.country}
-                  >
-                    <option value="" />
-                    {countries.map((option) => (
-                      <option key={option.code} value={option.label}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </TextField>
-                  <TextField fullWidth label="State/Region" {...getFieldProps('state')} />
-                </Stack>
-
-                <Stack direction={{ xs: 'column', md: 'row' }} spacing={2}>
-                  <TextField fullWidth label="City" {...getFieldProps('city')} />
-                  <TextField fullWidth label="Zip/Code" {...getFieldProps('zipCode')} />
-                </Stack>
-              </Stack>
-
-              <Box sx={{ mt: 3, display: 'flex', justifyContent: 'flex-end' }}>
-                <LoadingButton type="submit" variant="contained" loading={isSubmitting}>
-                  Save Changes
-                </LoadingButton>
-              </Box>
+                <Box sx={{ mt: 3, display: 'flex', justifyContent: 'flex-end' }}>
+                  <LoadingButton type="submit" variant="contained" loading={isSubmitting}>
+                    Save Changes
+                  </LoadingButton>
+                </Box>
+              </CardContent>
             </Card>
           </Grid>
         </Grid>

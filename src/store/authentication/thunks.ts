@@ -65,3 +65,11 @@ export const checkSession = createAsyncThunk(
     } as AuthenticationState;
   }
 );
+
+export const updateUser = createAsyncThunk(
+  'authentication/updateUser',
+  async (updatedUser: User) => {
+    const updatedUserResponse: AxiosResponse<User> = await AuthAPI.updateUser(updatedUser);
+    return updatedUserResponse.data;
+  }
+);
