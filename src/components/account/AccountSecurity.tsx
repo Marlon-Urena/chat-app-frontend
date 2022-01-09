@@ -6,7 +6,7 @@ import { Stack, Card, TextField, Grid, Typography, CardHeader, CardContent } fro
 import { LoadingButton } from '@mui/lab';
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/store';
-import { getUser } from '../../store/authentication/thunks';
+import { getUser, updatePassword, updateUser } from '../../store/authentication/thunks';
 import useAuth from '../../hooks/useAuth';
 
 // ----------------------------------------------------------------------
@@ -25,21 +25,26 @@ export default function AccountSecurity() {
 
   const AccountInfoSchema = Yup.object().shape({
     email: Yup.string().email().required('Email is required.'),
-    username: Yup.string(),
-    phoneNumber: Yup.string()
+    username: Yup.string()
   });
 
   const accountInfoFormik = useFormik({
     initialValues: {
       email: currentUser?.email || '',
-      username: currentUser?.username || '',
-      phoneNumber: currentUser?.phoneNumber || ''
+      username: currentUser?.username || ''
     },
     validationSchema: AccountInfoSchema,
     onSubmit: async (values, { setSubmitting }) => {
-      // handle request
-      setSubmitting(false);
+      if (currentUser) {
+        dispatch(
+          updateUser({
+            ...currentUser,
+            ...values
+          })
+        );
+      }
       enqueueSnackbar('Save success', { variant: 'success' });
+      setSubmitting(false);
     }
   });
 
@@ -62,9 +67,13 @@ export default function AccountSecurity() {
     },
     validationSchema: ChangePasswordSchema,
     onSubmit: async (values, { setSubmitting }) => {
-      // handle request
+      dispatch(
+        updatePassword({ currentPassword: values.oldPassword, newPassword: values.newPassword })
+      )
+        .unwrap()
+        .then(() => enqueueSnackbar('Password changed successfully', { variant: 'success' }))
+        .catch(() => enqueueSnackbar('Invalid Password', { variant: 'error' }));
       setSubmitting(false);
-      enqueueSnackbar('Save success', { variant: 'success' });
     }
   });
 
@@ -105,18 +114,6 @@ export default function AccountSecurity() {
                     )}
                     helperText={
                       accountInfoFormik.touched.username && accountInfoFormik.errors.username
-                    }
-                  />
-                  <TextField
-                    {...accountInfoFormik.getFieldProps('phoneNumber')}
-                    fullWidth
-                    autoComplete="on"
-                    label="Phone Number"
-                    error={Boolean(
-                      accountInfoFormik.touched.phoneNumber && accountInfoFormik.errors.phoneNumber
-                    )}
-                    helperText={
-                      accountInfoFormik.touched.phoneNumber && accountInfoFormik.errors.phoneNumber
                     }
                   />
                   <LoadingButton
