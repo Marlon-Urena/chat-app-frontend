@@ -73,3 +73,16 @@ export const updateUser = createAsyncThunk(
     return updatedUserResponse.data;
   }
 );
+
+export const updatePassword = createAsyncThunk(
+  'authentication/updatePassword',
+  async (updatedPasswordDetails: { currentPassword: string; newPassword: string }) => {
+    const { currentPassword, newPassword } = updatedPasswordDetails;
+    const credential = firebase.auth.EmailAuthProvider.credential(
+      firebaseAuth.currentUser?.email || '',
+      currentPassword
+    );
+    await firebaseAuth.currentUser?.reauthenticateWithCredential(credential);
+    await firebaseAuth.currentUser?.updatePassword(newPassword);
+  }
+);

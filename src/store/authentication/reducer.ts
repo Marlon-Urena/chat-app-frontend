@@ -1,5 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { checkSession, getUser, login, logout, register, updateUser } from './thunks';
+import {
+  checkSession,
+  getUser,
+  login,
+  logout,
+  register,
+  updatePassword,
+  updateUser
+} from './thunks';
 import { AuthenticationState } from './types';
 
 const initialAuthenticationState: AuthenticationState = {
@@ -38,6 +46,7 @@ const authenticationSlice = createSlice({
     builder.addCase(updateUser.fulfilled, (state, action) => {
       return { ...state, currentUser: action.payload };
     });
+    builder.addCase(updatePassword.fulfilled, () => {});
   }
 });
 
