@@ -70,9 +70,11 @@ export default function AccountGeneral() {
             email: currentUser.email,
             ...values
           })
-        );
+        )
+          .unwrap()
+          .then(() => enqueueSnackbar('Update success', { variant: 'success' }))
+          .catch(() => enqueueSnackbar('Update not successful', { variant: 'error' }));
       }
-      enqueueSnackbar('Update success', { variant: 'success' });
       setSubmitting(false);
     }
   });
@@ -86,7 +88,7 @@ export default function AccountGeneral() {
       photoURL: currentUser?.photoURL || ''
     },
     validationSchema: ChangePhotoSchema,
-    onSubmit: (values) => {}
+    onSubmit: () => {}
   });
 
   const { errors, touched, isSubmitting, handleSubmit, getFieldProps, setFieldValue } = formik;
