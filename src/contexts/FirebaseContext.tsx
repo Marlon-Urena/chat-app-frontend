@@ -15,6 +15,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const dispatch = useAppDispatch();
   useEffect(() => {
     return firebaseAuth.onAuthStateChanged((updatedUser) => {
+      console.log(updatedUser);
       setUser(updatedUser);
       dispatch(checkSession(updatedUser));
     });

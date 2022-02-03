@@ -6,7 +6,8 @@ import {
   logout,
   register,
   updatePassword,
-  updateUser
+  updateUser,
+  updateUserAccountEmail
 } from './thunks';
 import { AuthenticationState } from './types';
 
@@ -47,6 +48,9 @@ const authenticationSlice = createSlice({
       return { ...state, currentUser: action.payload };
     });
     builder.addCase(updatePassword.fulfilled, () => {});
+    builder.addCase(updateUserAccountEmail.fulfilled, (state, action) => {
+      return { ...state, currentUser: action.payload };
+    });
   }
 });
 

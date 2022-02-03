@@ -86,3 +86,11 @@ export const updatePassword = createAsyncThunk(
     await firebaseAuth.currentUser?.updatePassword(newPassword);
   }
 );
+
+export const updateUserAccountEmail = createAsyncThunk(
+  'authentication/updateUserAccountEmail',
+  async (newEmail: string) => {
+    const updatedUserResponse: AxiosResponse<User> = await AuthAPI.updateUserAccountEmail(newEmail);
+    return updatedUserResponse.data;
+  }
+);

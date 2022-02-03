@@ -63,6 +63,7 @@ export default function AccountGeneral() {
 
     validationSchema: UpdateUserSchema,
     onSubmit: (values, { setSubmitting }) => {
+      console.log(currentUser);
       if (currentUser) {
         dispatch(
           updateUser({

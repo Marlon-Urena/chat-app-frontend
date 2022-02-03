@@ -2,11 +2,26 @@ import * as Yup from 'yup';
 import { useSnackbar } from 'notistack';
 import { useFormik, Form, FormikProvider } from 'formik';
 // material
-import { Stack, Card, TextField, Grid, Typography, CardHeader, CardContent } from '@mui/material';
+import {
+  Stack,
+  Card,
+  TextField,
+  Grid,
+  Typography,
+  CardHeader,
+  CardContent,
+  Button,
+  List,
+  Collapse,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText
+} from '@mui/material';
 import { LoadingButton } from '@mui/lab';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { ExpandLess, ExpandMore, StarBorder } from '@mui/icons-material';
 import { useAppDispatch, useAppSelector } from '../../store/store';
-import { getUser, updatePassword, updateUser } from '../../store/authentication/thunks';
+import { getUser, updatePassword, updateUserAccountEmail } from '../../store/authentication/thunks';
 import useAuth from '../../hooks/useAuth';
 
 // ----------------------------------------------------------------------
@@ -15,6 +30,7 @@ export default function AccountSecurity() {
   const { enqueueSnackbar } = useSnackbar();
   const dispatch = useAppDispatch();
   const { currentUser } = useAppSelector((state) => state.authentication);
+  const [editEmail, setEditEmail] = useState(true);
   const user = useAuth();
 
   useEffect(() => {
@@ -25,7 +41,7 @@ export default function AccountSecurity() {
 
   const AccountInfoSchema = Yup.object().shape({
     email: Yup.string().email().required('Email is required.'),
-    username: Yup.string()
+    username: Yup.string().required('Username is required.')
   });
 
   const accountInfoFormik = useFormik({
@@ -36,12 +52,10 @@ export default function AccountSecurity() {
     validationSchema: AccountInfoSchema,
     onSubmit: async (values, { setSubmitting }) => {
       if (currentUser) {
-        dispatch(
-          updateUser({
-            ...currentUser,
-            ...values
-          })
-        );
+        dispatch(updateUserAccountEmail(values.email))
+          .unwrap()
+          .then(() => enqueueSnackbar('Email updated', { variant: 'success' }))
+          .catch(() => enqueueSnackbar('Update not successful', { variant: 'error' }));
       }
       enqueueSnackbar('Save success', { variant: 'success' });
       setSubmitting(false);
@@ -77,11 +91,41 @@ export default function AccountSecurity() {
     }
   });
 
+  async function handleChangeEmail(newEmail: string) {
+    if (currentUser) {
+      dispatch(updateUserAccountEmail(newEmail))
+        .unwrap()
+        .then(() => {
+          enqueueSnackbar('Email updated', { variant: 'success' });
+          setEditEmail(true);
+        })
+        .catch((e) => {
+          enqueueSnackbar('Email not updated', { variant: 'error' });
+          console.log(e);
+        });
+    }
+  }
+
+  const [open, setOpen] = useState(true);
+
+  const handleClick = () => {
+    setOpen(!open);
+  };
+
+  // async function validateEmailOnBlur() {
+  //   const { email } = accountInfoFormik.values;
+  //   const response: AxiosResponse<boolean> = await AuthAPI.checkEmailAvailable(email);
+  //   const isEmailAvailable: boolean = response.data;
+  //   if (!isEmailAvailable) {
+  //     accountInfoFormik.errors.email = 'Email is not available';
+  //   }
+  // }
+
   const { errors, touched, isSubmitting, handleSubmit, getFieldProps } = passwordFormik;
 
   return (
     <Grid container spacing={3}>
-      <Grid item xs={4} md={6}>
+      <Grid item xs={12} md={6}>
         <FormikProvider value={accountInfoFormik}>
           <Form autoComplete="off" noValidate onSubmit={accountInfoFormik.handleSubmit}>
             <Card>
@@ -94,15 +138,52 @@ export default function AccountSecurity() {
               />
               <CardContent>
                 <Stack spacing={3} alignItems="flex-end">
+                  <List sx={{ width: '100%', borderBottom: '1px solid' }} component="nav">
+                    <ListItemButton onClick={handleClick}>
+                      <ListItemText primary="Email Address" />
+                      <ListItemText primary={accountInfoFormik.values.email} />
+                      {open ? <ExpandLess /> : <ExpandMore />}
+                    </ListItemButton>
+                    <Collapse in={open} timeout="auto" unmountOnExit>
+                      <List component="div" disablePadding>
+                        <ListItemButton sx={{ pl: 4 }}>
+                          <ListItemIcon>
+                            <StarBorder />
+                          </ListItemIcon>
+                          <ListItemText primary="Starred" />
+                        </ListItemButton>
+                      </List>
+                    </Collapse>
+                  </List>
                   <TextField
                     {...accountInfoFormik.getFieldProps('email')}
                     fullWidth
                     label="Email"
                     type="email"
+                    disabled={editEmail}
                     error={Boolean(
                       accountInfoFormik.touched.email && accountInfoFormik.errors.email
                     )}
                     helperText={accountInfoFormik.touched.email && accountInfoFormik.errors.email}
+                    InputProps={{
+                      endAdornment: editEmail ? (
+                        <Button variant="text" onClick={() => setEditEmail(false)}>
+                          Edit
+                        </Button>
+                      ) : (
+                        <>
+                          <Button variant="text" onClick={() => setEditEmail(true)}>
+                            Cancel
+                          </Button>
+                          <Button
+                            variant="text"
+                            onClick={() => handleChangeEmail(accountInfoFormik.values.email)}
+                          >
+                            Save
+                          </Button>
+                        </>
+                      )
+                    }}
                   />
                   <TextField
                     {...accountInfoFormik.getFieldProps('username')}
@@ -129,7 +210,7 @@ export default function AccountSecurity() {
           </Form>
         </FormikProvider>
       </Grid>
-      <Grid item xs={4} md={6}>
+      <Grid item xs={12} md={6}>
         <FormikProvider value={passwordFormik}>
           <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
             <Card>
