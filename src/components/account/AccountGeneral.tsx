@@ -23,9 +23,7 @@ import { fData } from '../../utils/formatNumber';
 import UploadAvatar from '../upload/UploadAvatar';
 import countries from './countries';
 import { useAppDispatch, useAppSelector } from '../../store/store';
-import { getUser, updateUser } from '../../store/authentication/thunks';
-
-// ----------------------------------------------------------------------
+import { getUser, updateProfilePhoto, updateUser } from '../../store/authentication/thunks';
 
 export default function AccountGeneral() {
   const { enqueueSnackbar } = useSnackbar();
@@ -38,6 +36,19 @@ export default function AccountGeneral() {
       dispatch(getUser(user));
     }
   }, [dispatch, user]);
+
+  const ChangePhotoSchema = Yup.object().shape({
+    photoUrl: Yup.string()
+  });
+
+  const photoFormik = useFormik({
+    enableReinitialize: true,
+    initialValues: {
+      photoUrl: currentUser?.photoUrl || ''
+    },
+    validationSchema: ChangePhotoSchema,
+    onSubmit: () => {}
+  });
 
   const UpdateUserSchema = Yup.object().shape({
     firstName: Yup.string(),
@@ -63,7 +74,6 @@ export default function AccountGeneral() {
 
     validationSchema: UpdateUserSchema,
     onSubmit: (values, { setSubmitting }) => {
-      console.log(currentUser);
       if (currentUser) {
         dispatch(
           updateUser({
@@ -80,38 +90,27 @@ export default function AccountGeneral() {
     }
   });
 
-  const ChangePhotoSchema = Yup.object().shape({
-    photoURL: Yup.string()
-  });
-
-  const photoFormik = useFormik({
-    initialValues: {
-      photoURL: currentUser?.photoURL || ''
-    },
-    validationSchema: ChangePhotoSchema,
-    onSubmit: () => {}
-  });
-
-  const { errors, touched, isSubmitting, handleSubmit, getFieldProps, setFieldValue } = formik;
+  const { errors, touched, isSubmitting, handleSubmit, getFieldProps } = formik;
 
   const handleDrop = useCallback(
     (acceptedFiles: File[]) => {
       const file = acceptedFiles[0];
       if (file) {
-        setFieldValue('photoURL', {
-          ...file,
-          preview: URL.createObjectURL(file)
-        });
+        dispatch(updateProfilePhoto(file))
+          .unwrap()
+          .then(() => enqueueSnackbar('Updated profile photo', { variant: 'success' }))
+          .catch(() => enqueueSnackbar('Update not successful', { variant: 'error' }));
+        photoFormik.setFieldValue('photoUrl', URL.createObjectURL(file));
       }
     },
-    [setFieldValue]
+    [dispatch, enqueueSnackbar, photoFormik]
   );
 
   return (
-    <FormikProvider value={formik}>
-      <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={4}>
+    <Grid container spacing={3}>
+      <Grid item xs={12} md={4}>
+        <FormikProvider value={photoFormik}>
+          <Form autoComplete="off" noValidate>
             <Card sx={{ textAlign: 'center' }}>
               <CardHeader
                 title={
@@ -123,10 +122,10 @@ export default function AccountGeneral() {
               <CardContent>
                 <UploadAvatar
                   accept="image/*"
-                  imageFile={photoFormik.values.photoURL}
+                  imageFile={photoFormik.values.photoUrl}
                   maxSize={3145728}
                   onDrop={handleDrop}
-                  error={Boolean(photoFormik.touched.photoURL && photoFormik.errors.photoURL)}
+                  error={Boolean(photoFormik.touched.photoUrl && photoFormik.errors.photoUrl)}
                   caption={
                     <Typography
                       variant="caption"
@@ -144,12 +143,16 @@ export default function AccountGeneral() {
                   }
                 />
                 <FormHelperText error sx={{ px: 2, textAlign: 'center' }}>
-                  {photoFormik.touched.photoURL && photoFormik.errors.photoURL}
+                  {photoFormik.touched.photoUrl && photoFormik.errors.photoUrl}
                 </FormHelperText>
               </CardContent>
             </Card>
-          </Grid>
-          <Grid item xs={12} md={6}>
+          </Form>
+        </FormikProvider>
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <FormikProvider value={formik}>
+          <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
             <Card>
               <CardHeader
                 title={
@@ -187,7 +190,6 @@ export default function AccountGeneral() {
                     </TextField>
                     <TextField fullWidth label="State/Region" {...getFieldProps('state')} />
                   </Stack>
-
                   <Stack direction={{ xs: 'column', md: 'row' }} spacing={2}>
                     <TextField fullWidth label="City" {...getFieldProps('city')} />
                     <TextField fullWidth label="Zip/Code" {...getFieldProps('zipCode')} />
@@ -200,9 +202,11 @@ export default function AccountGeneral() {
                 </Box>
               </CardContent>
             </Card>
-          </Grid>
-        </Grid>
-      </Form>
-    </FormikProvider>
+          </Form>
+        </FormikProvider>
+      </Grid>
+    </Grid>
   );
 }
+
+// ----------------------------------------------------------------------

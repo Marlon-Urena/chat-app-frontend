@@ -2,7 +2,6 @@ import { Icon } from '@iconify/react';
 import arrowIosForwardFill from '@iconify/icons-eva/arrow-ios-forward-fill';
 import arrowIosDownwardFill from '@iconify/icons-eva/arrow-ios-downward-fill';
 // material
-import { styled } from '@mui/material/styles';
 import {
   Box,
   List,
@@ -11,7 +10,8 @@ import {
   Collapse,
   ListItemText,
   ListItemAvatar,
-  ListItemButton
+  ListItemButton,
+  styled
 } from '@mui/material';
 //
 import Scrollbar from '../Scrollbar';
@@ -24,7 +24,7 @@ import { Contact } from '../../store/chat/types';
 const HEIGHT = 64;
 
 const CollapseButtonStyle = styled(Button)(({ theme }) => ({
-  ...theme.typography.overline,
+  typography: 'overline',
   height: 40,
   borderRadius: 0,
   padding: theme.spacing(1, 2),

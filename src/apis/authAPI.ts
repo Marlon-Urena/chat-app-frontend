@@ -3,7 +3,7 @@ import firebase from 'firebase/compat';
 import { User } from '../store/authentication/types';
 
 const authenticationServiceURL = `${process.env.REACT_APP_AUTHENTICATION_SERVICE_URL}/auth`;
-const userServiceURL = 'http://localhost:8443';
+const userServiceURL = `${process.env.REACT_APP_USER_ACCOUNT_SERVICE_URL}`;
 
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
 axios.defaults.headers.get['Content-Type'] = 'application/json;charset=UTF-8';
@@ -40,12 +40,31 @@ async function checkUsernameAvailable(username: string): Promise<AxiosResponse<b
   return axios.post(`${userServiceURL}/register/username-availability`, username);
 }
 
-async function updateUserAccountEmail(newEmail: string): Promise<AxiosResponse<User>> {
+async function changeEmail(newEmail: string): Promise<AxiosResponse<User>> {
   const user = firebase.auth().currentUser;
   return axios.patch(`${userServiceURL}/user/change_email`, newEmail, {
     headers: {
-      Authorization: `Bearer ${await user?.getIdToken()}`,
-      ContentType: 'application/json;charset=UTF-8'
+      Authorization: `Bearer ${await user?.getIdToken()}`
+    }
+  });
+}
+
+async function changeUsername(newUsername: string): Promise<AxiosResponse<User>> {
+  const user = firebase.auth().currentUser;
+  return axios.patch(`${userServiceURL}/user/change_username`, newUsername, {
+    headers: {
+      Authorization: `Bearer ${await user?.getIdToken()}`
+    }
+  });
+}
+
+async function changeProfilePhoto(photoFile: File): Promise<AxiosResponse<User>> {
+  const user = firebase.auth().currentUser;
+  const photoData = new FormData();
+  photoData.append('file', photoFile);
+  return axios.post(`${userServiceURL}/user/change_profile_photo`, photoData, {
+    headers: {
+      Authorization: `Bearer ${await user?.getIdToken()}`
     }
   });
 }
@@ -56,5 +75,7 @@ export {
   updateUser,
   checkEmailAvailable,
   checkUsernameAvailable,
-  updateUserAccountEmail
+  changeEmail,
+  changeUsername,
+  changeProfilePhoto
 };

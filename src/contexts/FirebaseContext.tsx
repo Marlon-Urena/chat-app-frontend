@@ -14,8 +14,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<firebase.User | null>(firebaseAuth.currentUser);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    return firebaseAuth.onAuthStateChanged((updatedUser) => {
-      console.log(updatedUser);
+    return firebaseAuth.onIdTokenChanged((updatedUser) => {
       setUser(updatedUser);
       dispatch(checkSession(updatedUser));
     });

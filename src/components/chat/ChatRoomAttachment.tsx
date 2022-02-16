@@ -3,8 +3,7 @@ import { uniq, flatten } from 'lodash';
 import arrowIosForwardFill from '@iconify/icons-eva/arrow-ios-forward-fill';
 import arrowIosDownwardFill from '@iconify/icons-eva/arrow-ios-downward-fill';
 // material
-import { alpha, styled } from '@mui/material/styles';
-import { Box, Button, Divider, Collapse, Typography } from '@mui/material';
+import { Box, Button, Divider, Collapse, Typography, styled, alpha } from '@mui/material';
 // utils
 import { fDateTime } from '../../utils/formatTime';
 import { getFileFullName, getFileThumb } from '../../utils/getFileFormat';
@@ -44,7 +43,7 @@ const FileThumbStyle = styled('div')(({ theme }) => ({
 }));
 
 const CollapseButtonStyle = styled(Button)(({ theme }) => ({
-  ...theme.typography.overline,
+  typography: 'overline',
   height: 40,
   flexShrink: 0,
   borderRadius: 0,

@@ -1,5 +1,5 @@
 import { Icon } from '@iconify/react';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import settings2Fill from '@iconify/icons-eva/settings-2-fill';
 import { Link as RouterLink } from 'react-router-dom';
 // material
@@ -20,9 +20,9 @@ import { capitalCase } from 'change-case';
 import MenuPopover from '../../components/MenuPopover';
 import BadgeStatus from '../../components/BadgeStatus';
 // mocks
-import account from '../../_mocks_/account';
-import { useAppDispatch } from '../../store/store';
-import { logout } from '../../store/authentication/thunks';
+import { useAppDispatch, useAppSelector } from '../../store/store';
+import { getUser, logout } from '../../store/authentication/thunks';
+import useAuth from '../../hooks/useAuth';
 
 // ----------------------------------------------------------------------
 
@@ -33,6 +33,15 @@ export default function AccountPopover() {
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState('online');
   const dispatch = useAppDispatch();
+  const { currentUser } = useAppSelector((state) => state.authentication);
+
+  const user = useAuth();
+
+  useEffect(() => {
+    if (user) {
+      dispatch(getUser(user));
+    }
+  }, [dispatch, user]);
 
   const handleOpen = () => {
     setOpen(true);
@@ -69,7 +78,7 @@ export default function AccountPopover() {
           })
         }}
       >
-        <Avatar src={account.photoURL} alt="photoURL" />
+        <Avatar src={currentUser?.photoUrl} alt="photoUrl" />
         <BadgeStatus status="online" sx={{ position: 'absolute', bottom: 2, right: 2 }} />
       </IconButton>
       <MenuPopover
@@ -80,10 +89,10 @@ export default function AccountPopover() {
       >
         <Box sx={{ my: 1.5, px: 2.5 }}>
           <Typography variant="subtitle1" noWrap>
-            {account.displayName}
+            {currentUser?.username}
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
-            {account.email}
+            {currentUser?.email}
           </Typography>
         </Box>
         <Divider sx={{ my: 1 }} />
