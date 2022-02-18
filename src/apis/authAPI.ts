@@ -3,7 +3,7 @@ import firebase from 'firebase/compat';
 import { User } from '../store/authentication/types';
 
 const authenticationServiceURL = `${process.env.REACT_APP_AUTHENTICATION_SERVICE_URL}/auth`;
-const userServiceURL = `${process.env.REACT_APP_USER_ACCOUNT_SERVICE_URL}`;
+const userServiceURL = 'http://localhost:8440';
 
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
 axios.defaults.headers.get['Content-Type'] = 'application/json;charset=UTF-8';
