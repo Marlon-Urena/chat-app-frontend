@@ -1,7 +1,5 @@
 import { SxProps } from '@mui/system';
-import { Theme } from '@mui/material';
-import { styled } from '@mui/material/styles';
-
+import { styled, Theme } from '@mui/material';
 // ----------------------------------------------------------------------
 
 const BadgeStatusStyle = styled('span')({
@@ -55,11 +53,11 @@ export default function BadgeStatus({ status, size, sx, ...others }: BadgeStatus
   };
 
   const color = handleStatusColor(status);
-  const badgeWidth: number = handleSize(size);
+  const badgeLength: number = handleSize(size);
 
   return (
     <BadgeStatusStyle
-      sx={{ height: badgeWidth, width: badgeWidth, backgroundColor: color, ...sx }}
+      sx={{ height: badgeLength, width: badgeLength, backgroundColor: color, ...sx }}
       {...others}
     />
   );
