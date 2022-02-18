@@ -31,7 +31,7 @@ interface ListItemStyleProps {
 const ListItemStyle = styled((props: ListItemStyleProps) => (
   <ListItemButton disableGutters {...props} />
 ))(({ theme }) => ({
-  ...theme.typography.body2,
+  typography: 'body2',
   height: 48,
   position: 'relative',
   textTransform: 'capitalize',

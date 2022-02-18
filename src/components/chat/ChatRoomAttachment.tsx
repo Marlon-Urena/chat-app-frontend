@@ -44,7 +44,7 @@ const FileThumbStyle = styled('div')(({ theme }) => ({
 }));
 
 const CollapseButtonStyle = styled(Button)(({ theme }) => ({
-  ...theme.typography.overline,
+  typography: 'overline',
   height: 40,
   flexShrink: 0,
   borderRadius: 0,

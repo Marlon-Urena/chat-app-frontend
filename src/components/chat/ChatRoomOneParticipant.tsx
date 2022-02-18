@@ -12,7 +12,7 @@ import { Contact } from '../../store/chat/types';
 // ----------------------------------------------------------------------
 
 const CollapseButtonStyle = styled(Button)(({ theme }) => ({
-  ...theme.typography.overline,
+  typography: 'overline',
   height: 40,
   borderRadius: 0,
   padding: theme.spacing(1, 2),
@@ -27,11 +27,11 @@ const RowIconStyle = styled(Icon)(({ theme }) => ({
   color: theme.palette.text.secondary
 }));
 
-const RowTextStyle = styled(Typography)(({ theme }) => ({
+const RowTextStyle = styled(Typography)(() => ({
   flexGrow: 1,
   maxWidth: 160,
   wordWrap: 'break-word',
-  ...theme.typography.body2
+  typography: 'body2'
 }));
 
 // ----------------------------------------------------------------------

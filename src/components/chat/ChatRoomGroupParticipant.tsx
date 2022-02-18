@@ -24,7 +24,7 @@ import { Contact } from '../../store/chat/types';
 const HEIGHT = 64;
 
 const CollapseButtonStyle = styled(Button)(({ theme }) => ({
-  ...theme.typography.overline,
+  typography: 'overline',
   height: 40,
   borderRadius: 0,
   padding: theme.spacing(1, 2),
