@@ -3,7 +3,7 @@ import { SerializedError } from '@reduxjs/toolkit';
 export interface User {
   username: string;
   email: string;
-  photoURL?: string;
+  photoUrl?: string;
   phoneNumber?: string;
   firstName?: string;
   lastName?: string;

@@ -6,6 +6,11 @@ import { AuthenticationState, User } from './types';
 import * as AuthAPI from '../../apis/authAPI';
 import firebaseAuth from '../../.firebase/firebaseConfig';
 
+const reauthenticateUser = async (email: string, password: string) => {
+  const credential = firebase.auth.EmailAuthProvider.credential(email, password);
+  return firebaseAuth.currentUser?.reauthenticateWithCredential(credential);
+};
+
 export const getUser = createAsyncThunk<AuthenticationState, firebase.User>(
   'authentication/getUser',
   async () => {
@@ -78,11 +83,41 @@ export const updatePassword = createAsyncThunk(
   'authentication/updatePassword',
   async (updatedPasswordDetails: { currentPassword: string; newPassword: string }) => {
     const { currentPassword, newPassword } = updatedPasswordDetails;
-    const credential = firebase.auth.EmailAuthProvider.credential(
-      firebaseAuth.currentUser?.email || '',
-      currentPassword
-    );
-    await firebaseAuth.currentUser?.reauthenticateWithCredential(credential);
+    await reauthenticateUser(firebaseAuth.currentUser?.email || '', currentPassword);
     await firebaseAuth.currentUser?.updatePassword(newPassword);
+  }
+);
+
+export const updateEmail = createAsyncThunk(
+  'authentication/updateEmail',
+  async (updateEmailDetails: { newEmail: string; currentPassword: string }) => {
+    const { newEmail, currentPassword } = updateEmailDetails;
+    await reauthenticateUser(firebaseAuth.currentUser?.email || '', currentPassword);
+
+    const updatedUserResponse: AxiosResponse<User> = await AuthAPI.changeEmail(newEmail);
+    await reauthenticateUser(newEmail, currentPassword);
+
+    return updatedUserResponse.data;
+  }
+);
+
+export const updateUsername = createAsyncThunk(
+  'authentication/updateUsername',
+  async (updateUsernameDetails: { newUsername: string; currentPassword: string }) => {
+    const { newUsername, currentPassword } = updateUsernameDetails;
+    await reauthenticateUser(firebaseAuth.currentUser?.email || '', currentPassword);
+    const updatedUserResponse: AxiosResponse<User> = await AuthAPI.changeUsername(newUsername);
+    return updatedUserResponse.data;
+  }
+);
+
+export const updateProfilePhoto = createAsyncThunk(
+  'authentication/updateProfilePhoto',
+  async (newProfilePhoto: File) => {
+    const updatedUserResponse: AxiosResponse<User> = await AuthAPI.changeProfilePhoto(
+      newProfilePhoto
+    );
+
+    return updatedUserResponse.data;
   }
 );

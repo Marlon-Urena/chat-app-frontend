@@ -80,12 +80,12 @@ export default function AccountGeneral() {
   });
 
   const ChangePhotoSchema = Yup.object().shape({
-    photoURL: Yup.string()
+    photoUrl: Yup.string()
   });
 
   const photoFormik = useFormik({
     initialValues: {
-      photoURL: currentUser?.photoURL || ''
+      photoUrl: currentUser?.photoUrl || ''
     },
     validationSchema: ChangePhotoSchema,
     onSubmit: () => {}
@@ -97,7 +97,7 @@ export default function AccountGeneral() {
     (acceptedFiles: File[]) => {
       const file = acceptedFiles[0];
       if (file) {
-        setFieldValue('photoURL', {
+        setFieldValue('photoUrl', {
           ...file,
           preview: URL.createObjectURL(file)
         });
@@ -122,10 +122,10 @@ export default function AccountGeneral() {
               <CardContent>
                 <UploadAvatar
                   accept="image/*"
-                  imageFile={photoFormik.values.photoURL}
+                  imageFile={photoFormik.values.photoUrl}
                   maxSize={3145728}
                   onDrop={handleDrop}
-                  error={Boolean(photoFormik.touched.photoURL && photoFormik.errors.photoURL)}
+                  error={Boolean(photoFormik.touched.photoUrl && photoFormik.errors.photoUrl)}
                   caption={
                     <Typography
                       variant="caption"
@@ -143,7 +143,7 @@ export default function AccountGeneral() {
                   }
                 />
                 <FormHelperText error sx={{ px: 2, textAlign: 'center' }}>
-                  {photoFormik.touched.photoURL && photoFormik.errors.photoURL}
+                  {photoFormik.touched.photoUrl && photoFormik.errors.photoUrl}
                 </FormHelperText>
               </CardContent>
             </Card>

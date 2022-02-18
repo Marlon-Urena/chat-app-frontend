@@ -6,7 +6,10 @@ import {
   logout,
   register,
   updatePassword,
-  updateUser
+  updateUser,
+  updateEmail,
+  updateUsername,
+  updateProfilePhoto
 } from './thunks';
 import { AuthenticationState } from './types';
 
@@ -47,6 +50,15 @@ const authenticationSlice = createSlice({
       return { ...state, currentUser: action.payload };
     });
     builder.addCase(updatePassword.fulfilled, () => {});
+    builder.addCase(updateEmail.fulfilled, (state, action) => {
+      return { ...state, currentUser: action.payload };
+    });
+    builder.addCase(updateUsername.fulfilled, (state, action) => {
+      return { ...state, currentUser: action.payload };
+    });
+    builder.addCase(updateProfilePhoto.fulfilled, (state, action) => {
+      return { ...state, currentUser: action.payload };
+    });
   }
 });
 
