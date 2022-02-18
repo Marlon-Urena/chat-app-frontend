@@ -41,8 +41,9 @@ export default function RegisterForm() {
       password: ''
     },
     validationSchema: RegisterSchema,
-    onSubmit: (values) => {
+    onSubmit: (values, actions) => {
       dispatch(register(values));
+      actions.setSubmitting(false);
     }
   });
 
