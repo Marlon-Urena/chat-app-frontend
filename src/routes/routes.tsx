@@ -30,9 +30,9 @@ export default function Router() {
         </AuthRoute>
       ),
       children: [
-        { path: '', element: <Navigate to="/dashboard/chat" replace /> },
-        { path: 'chat', element: <Chat /> },
+        { path: '', element: <Navigate to="/dashboard/chat/new" replace /> },
         { path: 'chat/:conversationKey', element: <Chat /> },
+        { path: 'chat/new', element: <Chat /> },
         { path: 'account', element: <UserAccount /> }
       ]
     },
