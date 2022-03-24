@@ -49,6 +49,7 @@ export const register = createAsyncThunk(
   'authentication/register',
   async (signupDetails: { username: string; email: string; password: string }) => {
     await AuthAPI.createUser(signupDetails);
+    await firebaseAuth.signInWithEmailAndPassword(signupDetails.email, signupDetails.password);
     return {
       isAuthenticated: true,
       checkingSession: false,
