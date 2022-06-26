@@ -1,14 +1,9 @@
 import axios, { AxiosResponse } from 'axios';
-import firebase from 'firebase/compat';
-import { User } from '../store/authentication/types';
+import firebaseAuth from '../.firebase/firebaseConfig';
+import { User } from '../store/user/types';
 
 const authenticationServiceURL = `${process.env.REACT_APP_AUTHENTICATION_SERVICE_URL}/auth`;
-const userServiceURL = `${process.env.REACT_APP_USER_SERVICE_URL}`;
-
-axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
-axios.defaults.headers.get['Content-Type'] = 'application/json;charset=UTF-8';
-axios.defaults.headers.patch['Content-Type'] = 'application/json;charset=UTF-8';
-axios.defaults.headers.put['Content-Type'] = 'application/json;charset=UTF-8';
+const userServiceURL = process.env.REACT_APP_USER_ACCOUNT_SERVICE_URL;
 
 async function createUser(signupDetails: {
   username: string;
@@ -19,14 +14,14 @@ async function createUser(signupDetails: {
 }
 
 async function getUser(): Promise<AxiosResponse<User>> {
-  const user = firebase.auth().currentUser;
+  const user = firebaseAuth.currentUser;
   return axios.post(`${userServiceURL}/user`, undefined, {
     headers: { Authorization: `Bearer ${await user?.getIdToken()}` }
   });
 }
 
 async function updateUser(updatedUser: User): Promise<AxiosResponse<User>> {
-  const user = firebase.auth().currentUser;
+  const user = firebaseAuth.currentUser;
   return axios.put(`${userServiceURL}/user`, updatedUser, {
     headers: { Authorization: `Bearer ${await user?.getIdToken()}` }
   });
@@ -41,7 +36,7 @@ async function checkUsernameAvailable(username: string): Promise<AxiosResponse<b
 }
 
 async function changeEmail(newEmail: string): Promise<AxiosResponse<User>> {
-  const user = firebase.auth().currentUser;
+  const user = firebaseAuth.currentUser;
   return axios.patch(`${userServiceURL}/user/change_email`, newEmail, {
     headers: {
       Authorization: `Bearer ${await user?.getIdToken()}`
@@ -50,7 +45,7 @@ async function changeEmail(newEmail: string): Promise<AxiosResponse<User>> {
 }
 
 async function changeUsername(newUsername: string): Promise<AxiosResponse<User>> {
-  const user = firebase.auth().currentUser;
+  const user = firebaseAuth.currentUser;
   return axios.patch(`${userServiceURL}/user/change_username`, newUsername, {
     headers: {
       Authorization: `Bearer ${await user?.getIdToken()}`
@@ -59,7 +54,7 @@ async function changeUsername(newUsername: string): Promise<AxiosResponse<User>>
 }
 
 async function changeProfilePhoto(photoFile: File): Promise<AxiosResponse<User>> {
-  const user = firebase.auth().currentUser;
+  const user = firebaseAuth.currentUser;
   const photoData = new FormData();
   photoData.append('file', photoFile);
   return axios.post(`${userServiceURL}/user/change_profile_photo`, photoData, {
@@ -73,9 +68,9 @@ export {
   createUser,
   getUser,
   updateUser,
+  checkEmailAvailable,
+  checkUsernameAvailable,
   changeEmail,
   changeUsername,
-  changeProfilePhoto,
-  checkEmailAvailable,
-  checkUsernameAvailable
+  changeProfilePhoto
 };

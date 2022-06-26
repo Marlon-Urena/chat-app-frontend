@@ -18,7 +18,7 @@ import {
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { useAppDispatch, useAppSelector } from '../../../store/store';
-import { login } from '../../../store/authentication/thunks';
+import { login } from '../../../store/user/thunks';
 
 // ----------------------------------------------------------------------
 

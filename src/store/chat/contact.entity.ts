@@ -1,4 +1,5 @@
 import { createEntityAdapter, EntityState } from '@reduxjs/toolkit';
+import { schema } from 'normalizr';
 import { Contact } from './types';
 
 // ----------------------------------------------------------------------
@@ -6,6 +7,9 @@ import { Contact } from './types';
 export const contactAdapter = createEntityAdapter<Contact>({
   selectId: (contact) => contact.id
 });
+
+const contact = new schema.Entity('contacts', {}, { idAttribute: 'id' });
+export const ContactSchema = { contacts: [contact] };
 
 export const {
   selectIds: selectAllContactIds,

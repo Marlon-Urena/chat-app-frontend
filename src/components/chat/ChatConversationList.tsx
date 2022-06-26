@@ -13,6 +13,7 @@ interface ChatConversationListProps {
   conversations: ConversationState;
   isOpenSidebar?: boolean;
   activeConversationId?: string;
+  currentUserId: string;
   sx: SxProps<Theme>;
 }
 
@@ -20,6 +21,7 @@ export default function ChatConversationList({
   conversations,
   isOpenSidebar,
   activeConversationId,
+  currentUserId,
   ...other
 }: ChatConversationListProps) {
   const navigate = useNavigate();
@@ -31,7 +33,7 @@ export default function ChatConversationList({
       conversationKey = conversation.id;
     } else {
       const otherParticipant = conversation.participants.find(
-        (participant) => participant.id !== '8864c717-587d-472a-929a-8e5f298024da-0'
+        (participant) => participant.id !== currentUserId
       );
       conversationKey = otherParticipant!.username;
     }
@@ -44,6 +46,7 @@ export default function ChatConversationList({
         <ChatConversationItem
           key={conversationId}
           isOpenSidebar={isOpenSidebar}
+          currentUserId={currentUserId}
           conversation={conversations.entities[conversationId]!}
           isSelected={activeConversationId === conversationId}
           onSelectConversation={() => handleSelectConversation(conversationId as string)}

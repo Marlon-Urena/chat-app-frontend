@@ -39,7 +39,7 @@ export default function ChatRoomPopup({
   onClose,
   ...other
 }: ChatRoomPopupProps) {
-  const { name, avatar, position, address, phone, email } = participant;
+  const { name, avatar, position, address, phoneNumber: phone, email } = participant;
 
   return (
     <DialogAnimate fullWidth maxWidth="xs" open={isOpen} onClose={onClose} {...other}>

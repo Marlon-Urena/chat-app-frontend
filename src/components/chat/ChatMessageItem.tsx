@@ -41,19 +41,21 @@ const MessageImgStyle = styled('img')(({ theme }) => ({
 interface ChatMessageItemProps {
   message: Message;
   conversation: Conversation;
+  currentUserId: string;
   onOpenLightbox: (imgSrc: string) => void;
 }
 
 export default function ChatMessageItem({
   message,
   conversation,
+  currentUserId,
   onOpenLightbox
 }: ChatMessageItemProps) {
   const sender = conversation.participants.find(
     (participant) => participant.id === message.senderId
   );
   const senderDetails =
-    message.senderId === '8864c717-587d-472a-929a-8e5f298024da-0'
+    message.senderId === currentUserId
       ? { type: 'me' }
       : { avatar: sender?.avatar, name: sender?.name };
 

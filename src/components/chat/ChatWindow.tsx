@@ -1,16 +1,18 @@
 import { useEffect } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { debounce } from 'lodash';
 // material
 import { Box, Divider, Stack } from '@mui/material';
+import { getContacts, getConversation } from 'src/store/chat/thunks';
+
 // store
 import { RootState, useAppDispatch, useAppSelector } from '../../store/store';
 import {
   addRecipients,
-  getConversation,
   getParticipants,
   markConversationAsRead,
-  onSendMessage,
-  resetActiveConversation
+  resetActiveConversation,
+  sendMessage
 } from '../../store/chat/reducer';
 //
 import ChatRoom from './ChatRoom';
@@ -42,28 +44,26 @@ export default function ChatWindow() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const { conversationKey } = useParams();
-  const { contacts, recipients, participants, activeConversationId } = useAppSelector(
-    (state) => state.chat
-  );
+
+  const { contacts, recipients, participants, activeConversationId, currentUserId } =
+    useAppSelector((state) => state.chat);
   const conversation = useAppSelector((state) => conversationSelector(state));
 
   const mode = conversationKey ? 'DETAIL' : 'COMPOSE';
-  const displayParticipants = participants.filter(
-    (item) => item.id !== '8864c717-587d-472a-929a-8e5f298024da-0'
-  );
+  const displayParticipants = participants.filter((item) => item.id !== currentUserId);
 
   useEffect(() => {
-    const getDetails = () => {
-      dispatch(getParticipants(conversationKey ?? ''));
+    const getDetails = (conversationId: string) => {
       try {
-        dispatch(getConversation(conversationKey ?? ''));
+        dispatch(getParticipants(conversationId));
+        dispatch(getConversation(conversationId));
       } catch (error) {
         console.error(error);
-        navigate('/dashboard/chat/new');
+        navigate('/dashboard/chat/new/');
       }
     };
     if (conversationKey) {
-      getDetails();
+      getDetails(conversationKey);
     } else if (activeConversationId) {
       dispatch(resetActiveConversation());
     }
@@ -79,9 +79,15 @@ export default function ChatWindow() {
     dispatch(addRecipients(newRecipients));
   };
 
+  const handleChangeQuery = (value: string) => {
+    dispatch(getContacts(value));
+  };
+
+  const debounceChangeQuery = debounce(handleChangeQuery, 3000);
+
   const handleSendMessage = async (message: NewMessage) => {
     try {
-      dispatch(onSendMessage(message));
+      dispatch(sendMessage(message));
     } catch (error) {
       console.error(error);
     }
@@ -98,6 +104,7 @@ export default function ChatWindow() {
             Object.values(contacts.entities).filter((contact) => contact !== undefined) as Contact[]
           }
           onAddRecipients={handleAddRecipients}
+          onChangeQuery={debounceChangeQuery}
         />
       )}
 
@@ -105,12 +112,13 @@ export default function ChatWindow() {
 
       <Box sx={{ flexGrow: 1, display: 'flex', overflow: 'hidden' }}>
         <Stack sx={{ flexGrow: 1 }}>
-          <ChatMessageList conversation={conversation} />
+          <ChatMessageList conversation={conversation} currentUserId={currentUserId} />
 
           <Divider />
 
           <ChatMessageInput
             conversationId={activeConversationId}
+            uid={currentUserId}
             onSend={handleSendMessage}
             disabled={pathname === '/dashboard/chat/new'}
           />

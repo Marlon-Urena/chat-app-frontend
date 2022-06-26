@@ -7,23 +7,23 @@ export interface Conversation {
 }
 export interface Message {
   id: string;
-  attachments: string[];
+  attachments?: string[];
   senderId: string;
   contentType: string;
   body: string;
-  createdAt: string;
+  createdAt: Date | string;
 }
 export interface Contact {
   id: string;
+  email: string;
   username: string;
   name: string;
-  avatar: string;
+  avatar?: string;
   status: string;
-  position: string;
-  email: string;
-  phone: string;
-  address: string;
+  position?: string;
+  phoneNumber?: string;
+  address?: string;
   lastActivity: string;
 }
 
-export type NewMessage = Message & { conversationId: string };
+export type NewMessage = { requestType: number; conversationId: string; message: Message };

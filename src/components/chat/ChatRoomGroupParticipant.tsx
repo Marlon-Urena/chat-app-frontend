@@ -2,7 +2,6 @@ import { Icon } from '@iconify/react';
 import arrowIosForwardFill from '@iconify/icons-eva/arrow-ios-forward-fill';
 import arrowIosDownwardFill from '@iconify/icons-eva/arrow-ios-downward-fill';
 // material
-import { styled } from '@mui/material/styles';
 import {
   Box,
   List,
@@ -11,7 +10,8 @@ import {
   Collapse,
   ListItemText,
   ListItemAvatar,
-  ListItemButton
+  ListItemButton,
+  styled
 } from '@mui/material';
 //
 import Scrollbar from '../Scrollbar';

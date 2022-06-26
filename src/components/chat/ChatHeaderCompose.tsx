@@ -35,6 +35,9 @@ const AutocompleteStyle = styled('div')(({ theme }) => ({
       borderWidth: `1px !important`,
       borderColor: `${alpha(theme.palette.grey[500], 0.32)} !important`
     }
+  },
+  '& .MuiAutocomplete-groupUl': {
+    padding: `0px ${theme.spacing(1)}px`
   }
 }));
 
@@ -45,18 +48,21 @@ interface ChatHeaderComposeProps {
   contacts: Contact[];
   recipients: Contact[];
   onAddRecipients: (newRecipients: Contact[]) => void;
+  onChangeQuery: (value: string) => void;
 }
 
 export default function ChatHeaderCompose({
   contacts,
   recipients,
   onAddRecipients,
+  onChangeQuery,
   ...other
 }: ChatHeaderComposeProps) {
   const [query, setQuery] = useState('');
 
   const handleChangeQuery = (event: SyntheticEvent, value: string) => {
     setQuery(value);
+    onChangeQuery(value);
   };
 
   const handleAddRecipients = (event: SyntheticEvent, newRecipients: Contact[]) => {
@@ -82,11 +88,11 @@ export default function ChatHeaderCompose({
           options={contacts}
           getOptionLabel={(recipient) => recipient.name}
           renderOption={(props, recipient, { inputValue, selected }) => {
-            const { name, avatar } = recipient;
-            const matches = match(name, inputValue);
-            const parts = parse(name, matches);
+            const { username, avatar } = recipient;
+            const matches = match(username, inputValue);
+            const parts = parse(username, matches);
             return (
-              <li {...props}>
+              <Box {...props} component="li" borderRadius={1} my={1} sx={{ p: '12px !important' }}>
                 <Box
                   sx={{
                     width: 32,
@@ -96,7 +102,7 @@ export default function ChatHeaderCompose({
                     position: 'relative'
                   }}
                 >
-                  <Avatar alt={name} src={avatar} />
+                  <Avatar alt={username} src={avatar} sx={{ height: 32, width: 32 }} />
                   <Box
                     sx={{
                       top: 0,
@@ -132,7 +138,7 @@ export default function ChatHeaderCompose({
                     {part.text}
                   </Typography>
                 ))}
-              </li>
+              </Box>
             );
           }}
           renderTags={(recipientList, getTagProps) =>
