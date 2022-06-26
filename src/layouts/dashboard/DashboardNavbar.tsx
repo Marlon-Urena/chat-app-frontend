@@ -51,7 +51,7 @@ export default function DashboardNavbar({ onOpenSidebar }: DashboardNavbarProps)
           <Box sx={{ flexGrow: 1 }} />
           <Stack direction="row" alignItems="center" spacing={{ xs: 0.5, sm: 1.5 }}>
             <LanguagePopover />
-            <IconButton to="/dashboard/chat" component={RouterLink} size="large">
+            <IconButton to="/dashboard/chat/new" component={RouterLink} size="large">
               <Icon color="green" icon={messageCircleFill} width={20} height={20} />
             </IconButton>
             <AccountPopover />

@@ -88,7 +88,11 @@ export default function ChatRoomAttachment({
   ...other
 }: ChatRoomAttachmentProps) {
   const totalAttachment = uniq(
-    flatten(conversation.messages.map((message) => message.attachments))
+    flatten(
+      conversation.messages.filter(
+        (message) => message.contentType === 'image' || message.contentType === 'file'
+      )
+    )
   ).length;
 
   return (
@@ -112,13 +116,13 @@ export default function ChatRoomAttachment({
 
       <Scrollbar>
         <Collapse in={isCollapse}>
-          {conversation.messages.map((file) => (
-            <div key={file.id}>
-              {file.attachments.map((fileUrl: string) => (
-                <AttachmentItem key={fileUrl} file={file} fileUrl={fileUrl} />
-              ))}
-            </div>
-          ))}
+          {conversation.messages
+            .filter((message) => message.contentType === 'image' || message.contentType === 'file')
+            .map((file) => (
+              <div key={file.id}>
+                <AttachmentItem key={file.body} file={file} fileUrl={file.body} />
+              </div>
+            ))}
         </Collapse>
       </Scrollbar>
     </RootStyle>

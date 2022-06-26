@@ -3,8 +3,10 @@ import { AxiosResponse } from 'axios';
 import { browserSessionPersistence, browserLocalPersistence, setPersistence } from 'firebase/auth';
 import firebase from 'firebase/compat';
 import { AuthenticationState, User } from './types';
-import * as AuthAPI from '../../apis/authAPI';
+import * as AuthAPI from '../../apis/userAPI';
 import firebaseAuth from '../../.firebase/firebaseConfig';
+import { useAppDispatch } from '../store';
+import { setCurrentUserId } from '../chat/reducer';
 
 const reauthenticateUser = async (email: string, password: string) => {
   const credential = firebase.auth.EmailAuthProvider.credential(email, password);
@@ -12,7 +14,7 @@ const reauthenticateUser = async (email: string, password: string) => {
 };
 
 export const getUser = createAsyncThunk<AuthenticationState, firebase.User>(
-  'authentication/getUser',
+  'user/getUser',
   async () => {
     const response: AxiosResponse<User> = await AuthAPI.getUser();
     return {
@@ -24,11 +26,15 @@ export const getUser = createAsyncThunk<AuthenticationState, firebase.User>(
 export const login = createAsyncThunk<
   AuthenticationState,
   { email: string; password: string; remember: boolean }
->('authentication/login', async (credentials) => {
+>('user/login', async (credentials) => {
   const { email, password, remember } = credentials;
   const persistence = remember ? browserLocalPersistence : browserSessionPersistence;
   await setPersistence(firebaseAuth, persistence);
-  await firebaseAuth.signInWithEmailAndPassword(email, password);
+  const userCredentials = await firebaseAuth.signInWithEmailAndPassword(email, password);
+  const dispatch = useAppDispatch();
+  if (userCredentials.user) {
+    dispatch(setCurrentUserId(userCredentials.user.uid));
+  }
   return {
     isAuthenticated: true,
     checkingSession: false,
@@ -36,7 +42,7 @@ export const login = createAsyncThunk<
   } as AuthenticationState;
 });
 
-export const logout = createAsyncThunk('authentication/logout', async () => {
+export const logout = createAsyncThunk('user/logout', async () => {
   await firebaseAuth.signOut();
   return {
     isAuthenticated: false,
@@ -46,7 +52,7 @@ export const logout = createAsyncThunk('authentication/logout', async () => {
 });
 
 export const register = createAsyncThunk(
-  'authentication/register',
+  'user/register',
   async (signupDetails: { username: string; email: string; password: string }) => {
     await AuthAPI.createUser(signupDetails);
     await firebaseAuth.signInWithEmailAndPassword(signupDetails.email, signupDetails.password);
@@ -59,7 +65,7 @@ export const register = createAsyncThunk(
 );
 
 export const checkSession = createAsyncThunk(
-  'authentication/checkSession',
+  'user/checkSession',
   async (user: firebase.User | null) => {
     let isAuthenticated = false;
     if (user) {
@@ -72,16 +78,13 @@ export const checkSession = createAsyncThunk(
   }
 );
 
-export const updateUser = createAsyncThunk(
-  'authentication/updateUser',
-  async (updatedUser: User) => {
-    const updatedUserResponse: AxiosResponse<User> = await AuthAPI.updateUser(updatedUser);
-    return updatedUserResponse.data;
-  }
-);
+export const updateUser = createAsyncThunk('user/updateUser', async (updatedUser: User) => {
+  const updatedUserResponse: AxiosResponse<User> = await AuthAPI.updateUser(updatedUser);
+  return updatedUserResponse.data;
+});
 
 export const updatePassword = createAsyncThunk(
-  'authentication/updatePassword',
+  'user/updatePassword',
   async (updatedPasswordDetails: { currentPassword: string; newPassword: string }) => {
     const { currentPassword, newPassword } = updatedPasswordDetails;
     await reauthenticateUser(firebaseAuth.currentUser?.email || '', currentPassword);
@@ -90,7 +93,7 @@ export const updatePassword = createAsyncThunk(
 );
 
 export const updateEmail = createAsyncThunk(
-  'authentication/updateEmail',
+  'user/updateEmail',
   async (updateEmailDetails: { newEmail: string; currentPassword: string }) => {
     const { newEmail, currentPassword } = updateEmailDetails;
     await reauthenticateUser(firebaseAuth.currentUser?.email || '', currentPassword);
@@ -103,7 +106,7 @@ export const updateEmail = createAsyncThunk(
 );
 
 export const updateUsername = createAsyncThunk(
-  'authentication/updateUsername',
+  'user/updateUsername',
   async (updateUsernameDetails: { newUsername: string; currentPassword: string }) => {
     const { newUsername, currentPassword } = updateUsernameDetails;
     await reauthenticateUser(firebaseAuth.currentUser?.email || '', currentPassword);
@@ -113,7 +116,7 @@ export const updateUsername = createAsyncThunk(
 );
 
 export const updateProfilePhoto = createAsyncThunk(
-  'authentication/updateProfilePhoto',
+  'user/updateProfilePhoto',
   async (newProfilePhoto: File) => {
     const updatedUserResponse: AxiosResponse<User> = await AuthAPI.changeProfilePhoto(
       newProfilePhoto

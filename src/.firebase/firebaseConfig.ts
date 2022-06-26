@@ -13,7 +13,8 @@ const firebaseConfig = {
 
 const app = firebase.initializeApp(firebaseConfig);
 
-if (window.location.hostname === 'localhost') {
+console.log(process.env.REACT_APP_FIREBASE_AUTH_EMULATOR_HOST);
+if (window.location.hostname === 'localhost' || true) {
   app
     .auth()
     .useEmulator(process.env.REACT_APP_FIREBASE_AUTH_EMULATOR_HOST || 'http://localhost:9099');

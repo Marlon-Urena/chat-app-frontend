@@ -7,7 +7,7 @@ export const contacts: Contact[] = [
     username: 'jayvion.simon',
     avatar: '/static/mock-images/avatars/avatar_1.jpg',
     address: '19034 Verna Unions Apt. 164 - Honolulu, RI / 87535',
-    phone: '365-374-4961',
+    phoneNumber: '365-374-4961',
     email: 'nannie_abernathy70@yahoo.com',
     lastActivity: '2021-10-25T18:32:23.495Z',
     status: 'away',
@@ -19,7 +19,7 @@ export const contacts: Contact[] = [
     username: 'lucian.obrien',
     avatar: '/static/mock-images/avatars/avatar_2.jpg',
     address: '1147 Rohan Drive Suite 819 - Burlington, VT / 82021',
-    phone: '904-966-2836',
+    phoneNumber: '904-966-2836',
     email: 'ashlynn_ohara62@gmail.com',
     lastActivity: '2021-10-24T17:32:23.496Z',
     status: 'online',
@@ -31,7 +31,7 @@ export const contacts: Contact[] = [
     username: 'deja.brady',
     avatar: '/static/mock-images/avatars/avatar_3.jpg',
     address: '18605 Thompson Circle Apt. 086 - Idaho Falls, WV / 50337',
-    phone: '399-757-9909',
+    phoneNumber: '399-757-9909',
     email: 'milo.farrell@hotmail.com',
     lastActivity: '2021-10-23T16:32:23.496Z',
     status: 'busy',
@@ -43,7 +43,7 @@ export const contacts: Contact[] = [
     username: 'harrison.stein',
     avatar: '/static/mock-images/avatars/avatar_4.jpg',
     address: '110 Lamar Station Apt. 730 - Hagerstown, OK / 49808',
-    phone: '692-767-2903',
+    phoneNumber: '692-767-2903',
     email: 'violet.ratke86@yahoo.com',
     lastActivity: '2021-10-22T15:32:23.496Z',
     status: 'busy',
@@ -55,7 +55,7 @@ export const contacts: Contact[] = [
     username: 'reece.chung',
     avatar: '/static/mock-images/avatars/avatar_5.jpg',
     address: '36901 Elmer Spurs Apt. 762 - Miramar, DE / 92836',
-    phone: '990-588-5716',
+    phoneNumber: '990-588-5716',
     email: 'letha_lubowitz24@yahoo.com',
     lastActivity: '2021-10-21T14:32:23.496Z',
     status: 'away',
@@ -67,7 +67,7 @@ export const contacts: Contact[] = [
     username: 'lainey.davidson',
     avatar: '/static/mock-images/avatars/avatar_6.jpg',
     address: '2089 Runolfsson Harbors Suite 886 - Chapel Hill, TX / 32827',
-    phone: '955-439-2578',
+    phoneNumber: '955-439-2578',
     email: 'aditya_greenfelder31@gmail.com',
     lastActivity: '2021-10-20T13:32:23.496Z',
     status: 'online',
@@ -79,7 +79,7 @@ export const contacts: Contact[] = [
     username: 'cristopher.cardenas',
     avatar: '/static/mock-images/avatars/avatar_7.jpg',
     address: '279 Karolann Ports Apt. 774 - Prescott Valley, WV / 53905',
-    phone: '226-924-4058',
+    phoneNumber: '226-924-4058',
     email: 'lenna_bergnaum27@hotmail.com',
     lastActivity: '2021-10-19T12:32:23.496Z',
     status: 'online',
@@ -91,7 +91,7 @@ export const contacts: Contact[] = [
     username: 'melanie.noble',
     avatar: '/static/mock-images/avatars/avatar_8.jpg',
     address: '96607 Claire Square Suite 591 - St. Louis Park, HI / 40802',
-    phone: '552-917-1454',
+    phoneNumber: '552-917-1454',
     email: 'luella.ryan33@gmail.com',
     lastActivity: '2021-10-18T11:32:23.496Z',
     status: 'online',
@@ -103,7 +103,7 @@ export const contacts: Contact[] = [
     username: 'chase.day',
     avatar: '/static/mock-images/avatars/avatar_9.jpg',
     address: '9388 Auer Station Suite 573 - Honolulu, AK / 98024',
-    phone: '285-840-9338',
+    phoneNumber: '285-840-9338',
     email: 'joana.simonis84@gmail.com',
     lastActivity: '2021-10-17T10:32:23.496Z',
     status: 'away',
@@ -115,7 +115,7 @@ export const contacts: Contact[] = [
     username: 'shawn.manning',
     avatar: '/static/mock-images/avatars/avatar_10.jpg',
     address: '47665 Adaline Squares Suite 510 - Blacksburg, NE / 53515',
-    phone: '306-269-2446',
+    phoneNumber: '306-269-2446',
     email: 'marjolaine_white94@gmail.com',
     lastActivity: '2021-10-16T09:32:23.496Z',
     status: 'away',
@@ -127,7 +127,7 @@ export const contacts: Contact[] = [
     username: 'soren.durham',
     avatar: '/static/mock-images/avatars/avatar_11.jpg',
     address: '989 Vernice Flats Apt. 183 - Billings, NV / 04147',
-    phone: '883-373-6253',
+    phoneNumber: '883-373-6253',
     email: 'vergie_block82@hotmail.com',
     lastActivity: '2021-10-15T08:32:23.496Z',
     status: 'offline',
@@ -139,7 +139,7 @@ export const contacts: Contact[] = [
     username: 'cortez.herring',
     avatar: '/static/mock-images/avatars/avatar_12.jpg',
     address: '91020 Wehner Locks Apt. 673 - Albany, WY / 68763',
-    phone: '476-509-8866',
+    phoneNumber: '476-509-8866',
     email: 'vito.hudson@hotmail.com',
     lastActivity: '2021-10-14T07:32:23.496Z',
     status: 'offline',
@@ -151,7 +151,7 @@ export const contacts: Contact[] = [
     username: 'brycen.jimenez',
     avatar: '/static/mock-images/avatars/avatar_13.jpg',
     address: '585 Candelario Pass Suite 090 - Columbus, LA / 25376',
-    phone: '201-465-1954',
+    phoneNumber: '201-465-1954',
     email: 'tyrel_greenholt@gmail.com',
     lastActivity: '2021-10-13T06:32:23.496Z',
     status: 'online',
@@ -163,7 +163,7 @@ export const contacts: Contact[] = [
     username: 'giana.brandt',
     avatar: '/static/mock-images/avatars/avatar_14.jpg',
     address: '80988 Renner Crest Apt. 000 - Fargo, VA / 24266',
-    phone: '538-295-9408',
+    phoneNumber: '538-295-9408',
     email: 'dwight.block85@yahoo.com',
     lastActivity: '2021-10-12T05:32:23.496Z',
     status: 'busy',
@@ -175,7 +175,7 @@ export const contacts: Contact[] = [
     username: 'aspen.schmitt',
     avatar: '/static/mock-images/avatars/avatar_15.jpg',
     address: '28307 Shayne Pike Suite 523 - North Las Vegas, AZ / 28550',
-    phone: '531-492-6028',
+    phoneNumber: '531-492-6028',
     email: 'mireya13@hotmail.com',
     lastActivity: '2021-10-11T04:32:23.496Z',
     status: 'offline',
@@ -187,7 +187,7 @@ export const contacts: Contact[] = [
     username: 'colten.aguilar',
     avatar: '/static/mock-images/avatars/avatar_16.jpg',
     address: '205 Farrell Highway Suite 333 - Rock Hill, OK / 63421',
-    phone: '981-699-7588',
+    phoneNumber: '981-699-7588',
     email: 'dasia_jenkins@hotmail.com',
     lastActivity: '2021-10-10T03:32:23.496Z',
     status: 'offline',
@@ -199,7 +199,7 @@ export const contacts: Contact[] = [
     username: 'angelique.morse',
     avatar: '/static/mock-images/avatars/avatar_17.jpg',
     address: '253 Kara Motorway Suite 821 - Manchester, SD / 09331',
-    phone: '500-268-4826',
+    phoneNumber: '500-268-4826',
     email: 'benny89@yahoo.com',
     lastActivity: '2021-10-09T02:32:23.496Z',
     status: 'away',
@@ -211,7 +211,7 @@ export const contacts: Contact[] = [
     username: 'selina.boyer',
     avatar: '/static/mock-images/avatars/avatar_18.jpg',
     address: '13663 Kiara Oval Suite 606 - Missoula, AR / 44478',
-    phone: '205-952-3828',
+    phoneNumber: '205-952-3828',
     email: 'dawn.goyette@gmail.com',
     lastActivity: '2021-10-08T01:32:23.496Z',
     status: 'online',
@@ -223,7 +223,7 @@ export const contacts: Contact[] = [
     username: 'lawson.bass',
     avatar: '/static/mock-images/avatars/avatar_19.jpg',
     address: '8110 Claire Port Apt. 703 - Anchorage, TN / 01753',
-    phone: '222-255-5190',
+    phoneNumber: '222-255-5190',
     email: 'zella_hickle4@yahoo.com',
     lastActivity: '2021-10-07T00:32:23.496Z',
     status: 'away',
@@ -235,7 +235,7 @@ export const contacts: Contact[] = [
     username: 'ariana.lang',
     avatar: '/static/mock-images/avatars/avatar_20.jpg',
     address: '4642 Demetris Lane Suite 407 - Edmond, AZ / 60888',
-    phone: '408-439-8033',
+    phoneNumber: '408-439-8033',
     email: 'avery43@hotmail.com',
     lastActivity: '2021-10-05T23:32:23.496Z',
     status: 'busy',
@@ -253,7 +253,7 @@ export const conversations: Conversation[] = [
         name: 'Jaydon Frankie',
         username: 'jaydon.frankie',
         address: '40079 Stroman Knolls, New Ardella, GA 27241',
-        phone: '255-263-6444',
+        phoneNumber: '255-263-6444',
         email: 'jaydon_frankie@gmail.com',
         lastActivity: '2021-10-24T17:32:23.496Z',
         position: 'Full Stack Designer',
@@ -265,7 +265,7 @@ export const conversations: Conversation[] = [
         username: 'lucian.obrien',
         avatar: '/static/mock-images/avatars/avatar_2.jpg',
         address: '1147 Rohan Drive Suite 819 - Burlington, VT / 82021',
-        phone: '904-966-2836',
+        phoneNumber: '904-966-2836',
         email: 'ashlynn_ohara62@gmail.com',
         lastActivity: '2021-10-24T17:32:23.496Z',
         status: 'online',
@@ -280,7 +280,7 @@ export const conversations: Conversation[] = [
         body: 'Quis veniam aut saepe aliquid nulla.',
         contentType: 'text',
         attachments: ['/static/mock-images/feeds/feed_2.jpg'],
-        createdAt: '2021-10-25T08:32:23.496Z',
+        createdAt: new Date('2021-10-25T08:32:23.496Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b2'
       },
       {
@@ -288,7 +288,7 @@ export const conversations: Conversation[] = [
         body: 'Reprehenderit ut voluptas sapiente ratione nostrum est.',
         contentType: 'text',
         attachments: ['/static/mock-images/feeds/feed_3.jpg'],
-        createdAt: '2021-10-25T16:32:23.496Z',
+        createdAt: new Date('2021-10-25T16:32:23.496Z'),
         senderId: '8864c717-587d-472a-929a-8e5f298024da-0'
       },
       {
@@ -296,7 +296,7 @@ export const conversations: Conversation[] = [
         body: 'Error ut sit vel molestias velit.',
         contentType: 'text',
         attachments: ['/static/mock-images/avatars/avatar_12.mp4'],
-        createdAt: '2021-10-25T18:24:23.496Z',
+        createdAt: new Date('2021-10-25T18:24:23.496Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b2'
       },
       {
@@ -308,7 +308,7 @@ export const conversations: Conversation[] = [
           'https://mail.google.com/mail/u/file2.xlsx',
           'https://mail.google.com/mail/u/file3.pptx'
         ],
-        createdAt: '2021-10-25T18:26:23.496Z',
+        createdAt: new Date('2021-10-25T18:26:23.496Z'),
         senderId: '8864c717-587d-472a-929a-8e5f298024da-0'
       },
       {
@@ -321,7 +321,7 @@ export const conversations: Conversation[] = [
           'https://mail.google.com/mail/u/file6.esp',
           'https://mail.google.com/mail/u/file7.sketch'
         ],
-        createdAt: '2021-10-25T18:28:23.496Z',
+        createdAt: new Date('2021-10-25T18:28:23.496Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b2'
       },
       {
@@ -329,7 +329,7 @@ export const conversations: Conversation[] = [
         attachments: [],
         contentType: 'image',
         body: '/static/mock-images/feeds/feed_5.jpg',
-        createdAt: '2021-10-25T18:30:23.496Z',
+        createdAt: new Date('2021-10-25T18:30:23.496Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b2'
       },
       {
@@ -337,7 +337,7 @@ export const conversations: Conversation[] = [
         contentType: 'text',
         body: 'Tempora officiis consequuntur architecto nostrum autem nam adipisci.',
         attachments: [],
-        createdAt: '2021-10-25T18:30:23.496Z',
+        createdAt: new Date('2021-10-25T18:30:23.496Z'),
         senderId: '8864c717-587d-472a-929a-8e5f298024da-0'
       },
       {
@@ -345,7 +345,7 @@ export const conversations: Conversation[] = [
         body: 'Voluptas sunt magni adipisci praesentium saepe.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T18:30:23.496Z',
+        createdAt: new Date('2021-10-25T18:30:23.496Z'),
         senderId: '8864c717-587d-472a-929a-8e5f298024da-0'
       }
     ]
@@ -359,7 +359,7 @@ export const conversations: Conversation[] = [
         name: 'Jaydon Frankie',
         username: 'jaydon.frankie',
         address: '40079 Stroman Knolls, New Ardella, GA 27241',
-        phone: '255-263-6444',
+        phoneNumber: '255-263-6444',
         email: 'jaydon_frankie@gmail.com',
         lastActivity: '2021-10-24T17:32:23.496Z',
         position: 'Full Stack Designer',
@@ -371,7 +371,7 @@ export const conversations: Conversation[] = [
         username: 'deja.brady',
         avatar: '/static/mock-images/avatars/avatar_3.jpg',
         address: '18605 Thompson Circle Apt. 086 - Idaho Falls, WV / 50337',
-        phone: '399-757-9909',
+        phoneNumber: '399-757-9909',
         email: 'milo.farrell@hotmail.com',
         lastActivity: '2021-10-23T16:32:23.496Z',
         status: 'busy',
@@ -386,7 +386,7 @@ export const conversations: Conversation[] = [
         body: 'Ea architecto quas voluptates voluptas earum illo est vel rem.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T10:32:23.496Z',
+        createdAt: new Date('2021-10-25T10:32:23.496Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b3'
       },
       {
@@ -394,7 +394,7 @@ export const conversations: Conversation[] = [
         body: 'Ipsum expedita reiciendis ut.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T12:32:23.496Z',
+        createdAt: new Date('2021-10-25T12:32:23.496Z'),
         senderId: '8864c717-587d-472a-929a-8e5f298024da-0'
       },
       {
@@ -402,7 +402,7 @@ export const conversations: Conversation[] = [
         body: 'Architecto vel voluptatibus alias a aut non maxime ipsa voluptates.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T14:02:23.497Z',
+        createdAt: new Date('2021-10-25T14:02:23.497Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b3'
       },
       {
@@ -410,7 +410,7 @@ export const conversations: Conversation[] = [
         body: 'Reiciendis enim officiis cupiditate eaque distinctio laudantium modi similique consequatur.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T16:17:23.497Z',
+        createdAt: new Date('2021-10-25T16:17:23.497Z'),
         senderId: '8864c717-587d-472a-929a-8e5f298024da-0'
       },
       {
@@ -418,7 +418,7 @@ export const conversations: Conversation[] = [
         body: 'Ab autem consequatur itaque mollitia ipsum cupiditate error repudiandae nobis.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T17:17:23.497Z',
+        createdAt: new Date('2021-10-25T17:17:23.497Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b3'
       },
       {
@@ -426,7 +426,7 @@ export const conversations: Conversation[] = [
         body: '/static/mock-images/feeds/feed_8.jpg',
         attachments: [],
         contentType: 'image',
-        createdAt: '2021-10-25T17:32:23.497Z',
+        createdAt: new Date('2021-10-25T17:32:23.497Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b3'
       },
       {
@@ -434,7 +434,7 @@ export const conversations: Conversation[] = [
         body: 'Distinctio architecto debitis eligendi consequatur unde id modi accusantium possimus.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T17:47:23.497Z',
+        createdAt: new Date('2021-10-25T17:47:23.497Z'),
         senderId: '8864c717-587d-472a-929a-8e5f298024da-0'
       }
     ]
@@ -448,7 +448,7 @@ export const conversations: Conversation[] = [
         name: 'Jaydon Frankie',
         username: 'jaydon.frankie',
         address: '40079 Stroman Knolls, New Ardella, GA 27241',
-        phone: '255-263-6444',
+        phoneNumber: '255-263-6444',
         email: 'jaydon_frankie@gmail.com',
         lastActivity: '2021-10-24T17:32:23.496Z',
         position: 'Full Stack Designer',
@@ -460,7 +460,7 @@ export const conversations: Conversation[] = [
         username: 'harrison.stein',
         avatar: '/static/mock-images/avatars/avatar_4.jpg',
         address: '110 Lamar Station Apt. 730 - Hagerstown, OK / 49808',
-        phone: '692-767-2903',
+        phoneNumber: '692-767-2903',
         email: 'violet.ratke86@yahoo.com',
         lastActivity: '2021-10-22T15:32:23.496Z',
         status: 'busy',
@@ -475,7 +475,7 @@ export const conversations: Conversation[] = [
         body: 'At ut voluptate accusantium.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T10:32:23.497Z',
+        createdAt: new Date('2021-10-25T10:32:23.497Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b4'
       },
       {
@@ -483,7 +483,7 @@ export const conversations: Conversation[] = [
         body: 'Repudiandae ut qui veritatis sint.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T12:32:23.497Z',
+        createdAt: new Date('2021-10-25T12:32:23.497Z'),
         senderId: '8864c717-587d-472a-929a-8e5f298024da-0'
       },
       {
@@ -491,7 +491,7 @@ export const conversations: Conversation[] = [
         body: 'Laboriosam blanditiis quo sed et qui esse ipsam necessitatibus sed.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T14:02:23.497Z',
+        createdAt: new Date('2021-10-25T14:02:23.497Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b4'
       },
       {
@@ -499,7 +499,7 @@ export const conversations: Conversation[] = [
         body: 'Et molestiae et excepturi maxime omnis.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T16:17:23.497Z',
+        createdAt: new Date('2021-10-25T16:17:23.497Z'),
         senderId: '8864c717-587d-472a-929a-8e5f298024da-0'
       },
       {
@@ -507,7 +507,7 @@ export const conversations: Conversation[] = [
         body: 'Sint dolorem quam eum magnam.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T17:17:23.497Z',
+        createdAt: new Date('2021-10-25T17:17:23.497Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b4'
       },
       {
@@ -515,7 +515,7 @@ export const conversations: Conversation[] = [
         body: '/static/mock-images/feeds/feed_6.jpg',
         contentType: 'image',
         attachments: [],
-        createdAt: '2021-10-25T17:32:23.497Z',
+        createdAt: new Date('2021-10-25T17:32:23.497Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b4'
       },
       {
@@ -523,7 +523,7 @@ export const conversations: Conversation[] = [
         body: '/static/mock-images/feeds/feed_7.jpg',
         contentType: 'image',
         attachments: [],
-        createdAt: '2021-10-25T17:32:23.497Z',
+        createdAt: new Date('2021-10-25T17:32:23.497Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b4'
       }
     ]
@@ -537,7 +537,7 @@ export const conversations: Conversation[] = [
         name: 'Jaydon Frankie',
         username: 'jaydon.frankie',
         address: '40079 Stroman Knolls, New Ardella, GA 27241',
-        phone: '255-263-6444',
+        phoneNumber: '255-263-6444',
         email: 'jaydon_frankie@gmail.com',
         lastActivity: '2021-10-24T17:32:23.496Z',
         position: 'Full Stack Designer',
@@ -549,7 +549,7 @@ export const conversations: Conversation[] = [
         username: 'reece.chung',
         avatar: '/static/mock-images/avatars/avatar_5.jpg',
         address: '36901 Elmer Spurs Apt. 762 - Miramar, DE / 92836',
-        phone: '990-588-5716',
+        phoneNumber: '990-588-5716',
         email: 'letha_lubowitz24@yahoo.com',
         lastActivity: '2021-10-21T14:32:23.496Z',
         status: 'away',
@@ -564,7 +564,7 @@ export const conversations: Conversation[] = [
         body: 'Rerum ut iusto iste quam voluptatem necessitatibus.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T08:32:23.497Z',
+        createdAt: new Date('2021-10-25T08:32:23.497Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b5'
       },
       {
@@ -572,7 +572,7 @@ export const conversations: Conversation[] = [
         body: 'Et quam in.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T16:32:23.497Z',
+        createdAt: new Date('2021-10-25T16:32:23.497Z'),
         senderId: '8864c717-587d-472a-929a-8e5f298024da-0'
       },
       {
@@ -580,7 +580,7 @@ export const conversations: Conversation[] = [
         body: 'Fugit esse tenetur.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T18:27:23.497Z',
+        createdAt: new Date('2021-10-25T18:27:23.497Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b5'
       },
       {
@@ -588,7 +588,7 @@ export const conversations: Conversation[] = [
         body: 'Dolorem dolor porro nihil cupiditate molestiae deserunt ut.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T18:29:23.497Z',
+        createdAt: new Date('2021-10-25T18:29:23.497Z'),
         senderId: '8864c717-587d-472a-929a-8e5f298024da-0'
       },
       {
@@ -596,7 +596,7 @@ export const conversations: Conversation[] = [
         body: 'Omnis beatae eos eius aut molestias laboriosam laborum et optio.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T18:31:23.497Z',
+        createdAt: new Date('2021-10-25T18:31:23.497Z'),
         senderId: '8864c717-587d-472a-929a-8e5f298024da-0'
       },
       {
@@ -604,7 +604,7 @@ export const conversations: Conversation[] = [
         body: 'Ut veniam quam assumenda ut voluptatibus ducimus accusamus.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T18:31:23.497Z',
+        createdAt: new Date('2021-10-25T18:31:23.497Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b5'
       }
     ]
@@ -618,7 +618,7 @@ export const conversations: Conversation[] = [
         name: 'Jaydon Frankie',
         username: 'jaydon.frankie',
         address: '40079 Stroman Knolls, New Ardella, GA 27241',
-        phone: '255-263-6444',
+        phoneNumber: '255-263-6444',
         email: 'jaydon_frankie@gmail.com',
         lastActivity: '2021-10-24T17:32:23.496Z',
         position: 'Full Stack Designer',
@@ -630,7 +630,7 @@ export const conversations: Conversation[] = [
         username: 'lainey.davidson',
         avatar: '/static/mock-images/avatars/avatar_6.jpg',
         address: '2089 Runolfsson Harbors Suite 886 - Chapel Hill, TX / 32827',
-        phone: '955-439-2578',
+        phoneNumber: '955-439-2578',
         email: 'aditya_greenfelder31@gmail.com',
         lastActivity: '2021-10-20T13:32:23.496Z',
         status: 'online',
@@ -645,7 +645,7 @@ export const conversations: Conversation[] = [
         body: 'Quos dignissimos neque omnis reiciendis voluptatem ducimus.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T18:31:23.497Z',
+        createdAt: new Date('2021-10-25T18:31:23.497Z'),
         senderId: '8864c717-587d-472a-929a-8e5f298024da-0'
       },
       {
@@ -653,7 +653,7 @@ export const conversations: Conversation[] = [
         body: 'Laboriosam quia ut esse.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T18:31:23.497Z',
+        createdAt: new Date('2021-10-25T18:31:23.497Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b6'
       }
     ]
@@ -667,7 +667,7 @@ export const conversations: Conversation[] = [
         name: 'Jaydon Frankie',
         username: 'jaydon.frankie',
         address: '40079 Stroman Knolls, New Ardella, GA 27241',
-        phone: '255-263-6444',
+        phoneNumber: '255-263-6444',
         email: 'jaydon_frankie@gmail.com',
         lastActivity: '2021-10-24T17:32:23.496Z',
         position: 'Full Stack Designer',
@@ -679,7 +679,7 @@ export const conversations: Conversation[] = [
         username: 'cristopher.cardenas',
         avatar: '/static/mock-images/avatars/avatar_7.jpg',
         address: '279 Karolann Ports Apt. 774 - Prescott Valley, WV / 53905',
-        phone: '226-924-4058',
+        phoneNumber: '226-924-4058',
         email: 'lenna_bergnaum27@hotmail.com',
         lastActivity: '2021-10-19T12:32:23.496Z',
         status: 'online',
@@ -694,7 +694,7 @@ export const conversations: Conversation[] = [
         body: 'Sit reiciendis nihil qui molestias et.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T18:31:23.497Z',
+        createdAt: new Date('2021-10-25T18:31:23.497Z'),
         senderId: '8864c717-587d-472a-929a-8e5f298024da-0'
       },
       {
@@ -702,7 +702,7 @@ export const conversations: Conversation[] = [
         body: 'Facilis cupiditate minima ratione quaerat omnis velit non ex totam.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T18:31:23.497Z',
+        createdAt: new Date('2021-10-25T18:31:23.497Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b7'
       }
     ]
@@ -716,7 +716,7 @@ export const conversations: Conversation[] = [
         name: 'Jaydon Frankie',
         username: 'jaydon.frankie',
         address: '40079 Stroman Knolls, New Ardella, GA 27241',
-        phone: '255-263-6444',
+        phoneNumber: '255-263-6444',
         email: 'jaydon_frankie@gmail.com',
         lastActivity: '2021-10-24T17:32:23.496Z',
         position: 'Full Stack Designer',
@@ -728,7 +728,7 @@ export const conversations: Conversation[] = [
         username: 'lucian.obrien',
         avatar: '/static/mock-images/avatars/avatar_2.jpg',
         address: '1147 Rohan Drive Suite 819 - Burlington, VT / 82021',
-        phone: '904-966-2836',
+        phoneNumber: '904-966-2836',
         email: 'ashlynn_ohara62@gmail.com',
         lastActivity: '2021-10-24T17:32:23.496Z',
         status: 'online',
@@ -740,7 +740,7 @@ export const conversations: Conversation[] = [
         username: 'deja.brady',
         avatar: '/static/mock-images/avatars/avatar_3.jpg',
         address: '18605 Thompson Circle Apt. 086 - Idaho Falls, WV / 50337',
-        phone: '399-757-9909',
+        phoneNumber: '399-757-9909',
         email: 'milo.farrell@hotmail.com',
         lastActivity: '2021-10-23T16:32:23.496Z',
         status: 'busy',
@@ -752,7 +752,7 @@ export const conversations: Conversation[] = [
         username: 'reece.chung',
         avatar: '/static/mock-images/avatars/avatar_5.jpg',
         address: '36901 Elmer Spurs Apt. 762 - Miramar, DE / 92836',
-        phone: '990-588-5716',
+        phoneNumber: '990-588-5716',
         email: 'letha_lubowitz24@yahoo.com',
         lastActivity: '2021-10-21T14:32:23.496Z',
         status: 'away',
@@ -764,7 +764,7 @@ export const conversations: Conversation[] = [
         username: 'harrison.stein',
         avatar: '/static/mock-images/avatars/avatar_4.jpg',
         address: '110 Lamar Station Apt. 730 - Hagerstown, OK / 49808',
-        phone: '692-767-2903',
+        phoneNumber: '692-767-2903',
         email: 'violet.ratke86@yahoo.com',
         lastActivity: '2021-10-22T15:32:23.496Z',
         status: 'busy',
@@ -785,7 +785,7 @@ export const conversations: Conversation[] = [
           '/static/mock-images/feeds/feed_5.jpg',
           'https://mail.google.com/mail/u/file1.docx'
         ],
-        createdAt: '2021-10-22T16:02:23.497Z',
+        createdAt: new Date('2021-10-22T16:02:23.497Z'),
         senderId: '8864c717-587d-472a-929a-8e5f298024da-0'
       },
       {
@@ -793,7 +793,7 @@ export const conversations: Conversation[] = [
         body: 'Molestias consequatur ea facilis.',
         contentType: 'text',
         attachments: ['https://mail.google.com/mail/u/file2.xlsx'],
-        createdAt: '2021-10-22T16:03:23.497Z',
+        createdAt: new Date('2021-10-22T16:03:23.497Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b2'
       },
       {
@@ -801,7 +801,7 @@ export const conversations: Conversation[] = [
         body: 'Tempora voluptatibus autem ut ut porro quae delectus dolorum.',
         contentType: 'text',
         attachments: ['https://mail.google.com/mail/u/file3.psd'],
-        createdAt: '2021-10-22T16:04:23.497Z',
+        createdAt: new Date('2021-10-22T16:04:23.497Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b3'
       },
       {
@@ -809,7 +809,7 @@ export const conversations: Conversation[] = [
         body: 'Et consequatur amet nemo ducimus voluptatem placeat voluptas.',
         contentType: 'text',
         attachments: ['https://mail.google.com/mail/u/file3.pptx'],
-        createdAt: '2021-10-22T16:05:23.497Z',
+        createdAt: new Date('2021-10-22T16:05:23.497Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b5'
       },
       {
@@ -817,7 +817,7 @@ export const conversations: Conversation[] = [
         body: 'Modi iste atque hic voluptas sit quis deleniti quas consequatur.',
         contentType: 'text',
         attachments: ['https://mail.google.com/mail/u/file3.ai'],
-        createdAt: '2021-10-22T16:06:23.497Z',
+        createdAt: new Date('2021-10-22T16:06:23.497Z'),
         senderId: '8864c717-587d-472a-929a-8e5f298024da-0'
       },
       {
@@ -825,7 +825,7 @@ export const conversations: Conversation[] = [
         body: 'Omnis est aliquid odio mollitia aliquid ex.',
         contentType: 'text',
         attachments: ['https://mail.google.com/mail/u/file3.mp4'],
-        createdAt: '2021-10-22T18:32:23.497Z',
+        createdAt: new Date('2021-10-22T18:32:23.497Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b4'
       }
     ]
@@ -839,7 +839,7 @@ export const conversations: Conversation[] = [
         name: 'Jaydon Frankie',
         username: 'jaydon.frankie',
         address: '40079 Stroman Knolls, New Ardella, GA 27241',
-        phone: '255-263-6444',
+        phoneNumber: '255-263-6444',
         email: 'jaydon_frankie@gmail.com',
         lastActivity: '2021-10-24T17:32:23.496Z',
         position: 'Full Stack Designer',
@@ -851,7 +851,7 @@ export const conversations: Conversation[] = [
         username: 'melanie.noble',
         avatar: '/static/mock-images/avatars/avatar_8.jpg',
         address: '96607 Claire Square Suite 591 - St. Louis Park, HI / 40802',
-        phone: '552-917-1454',
+        phoneNumber: '552-917-1454',
         email: 'luella.ryan33@gmail.com',
         lastActivity: '2021-10-18T11:32:23.496Z',
         status: 'online',
@@ -866,7 +866,7 @@ export const conversations: Conversation[] = [
         body: 'Officia possimus veniam quod molestias.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T18:31:23.497Z',
+        createdAt: new Date('2021-10-25T18:31:23.497Z'),
         senderId: '8864c717-587d-472a-929a-8e5f298024da-0'
       },
       {
@@ -874,7 +874,7 @@ export const conversations: Conversation[] = [
         body: 'Quis veniam aut saepe aliquid nulla.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T18:31:23.497Z',
+        createdAt: new Date('2021-10-25T18:31:23.497Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b8'
       }
     ]
@@ -888,7 +888,7 @@ export const conversations: Conversation[] = [
         name: 'Jaydon Frankie',
         username: 'jaydon.frankie',
         address: '40079 Stroman Knolls, New Ardella, GA 27241',
-        phone: '255-263-6444',
+        phoneNumber: '255-263-6444',
         email: 'jaydon_frankie@gmail.com',
         lastActivity: '2021-10-24T17:32:23.496Z',
         position: 'Full Stack Designer',
@@ -900,7 +900,7 @@ export const conversations: Conversation[] = [
         username: 'chase.day',
         avatar: '/static/mock-images/avatars/avatar_9.jpg',
         address: '9388 Auer Station Suite 573 - Honolulu, AK / 98024',
-        phone: '285-840-9338',
+        phoneNumber: '285-840-9338',
         email: 'joana.simonis84@gmail.com',
         lastActivity: '2021-10-17T10:32:23.496Z',
         status: 'away',
@@ -915,7 +915,7 @@ export const conversations: Conversation[] = [
         body: 'Reprehenderit ut voluptas sapiente ratione nostrum est.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T18:31:23.497Z',
+        createdAt: new Date('2021-10-25T18:31:23.497Z'),
         senderId: '8864c717-587d-472a-929a-8e5f298024da-0'
       },
       {
@@ -923,7 +923,7 @@ export const conversations: Conversation[] = [
         body: 'Error ut sit vel molestias velit.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T18:31:23.497Z',
+        createdAt: new Date('2021-10-25T18:31:23.497Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b9'
       }
     ]
@@ -937,7 +937,7 @@ export const conversations: Conversation[] = [
         name: 'Jaydon Frankie',
         username: 'jaydon.frankie',
         address: '40079 Stroman Knolls, New Ardella, GA 27241',
-        phone: '255-263-6444',
+        phoneNumber: '255-263-6444',
         email: 'jaydon_frankie@gmail.com',
         lastActivity: '2021-10-24T17:32:23.496Z',
         position: 'Full Stack Designer',
@@ -949,7 +949,7 @@ export const conversations: Conversation[] = [
         username: 'shawn.manning',
         avatar: '/static/mock-images/avatars/avatar_10.jpg',
         address: '47665 Adaline Squares Suite 510 - Blacksburg, NE / 53515',
-        phone: '306-269-2446',
+        phoneNumber: '306-269-2446',
         email: 'marjolaine_white94@gmail.com',
         lastActivity: '2021-10-16T09:32:23.496Z',
         status: 'away',
@@ -964,7 +964,7 @@ export const conversations: Conversation[] = [
         body: 'Quo quia sit nihil nemo doloremque et.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T18:31:23.497Z',
+        createdAt: new Date('2021-10-25T18:31:23.497Z'),
         senderId: '8864c717-587d-472a-929a-8e5f298024da-0'
       },
       {
@@ -972,7 +972,7 @@ export const conversations: Conversation[] = [
         body: 'Autem doloribus harum vero laborum.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T18:31:23.497Z',
+        createdAt: new Date('2021-10-25T18:31:23.497Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b10'
       }
     ]
@@ -986,7 +986,7 @@ export const conversations: Conversation[] = [
         name: 'Jaydon Frankie',
         username: 'jaydon.frankie',
         address: '40079 Stroman Knolls, New Ardella, GA 27241',
-        phone: '255-263-6444',
+        phoneNumber: '255-263-6444',
         email: 'jaydon_frankie@gmail.com',
         lastActivity: '2021-10-24T17:32:23.496Z',
         position: 'Full Stack Designer',
@@ -998,7 +998,7 @@ export const conversations: Conversation[] = [
         username: 'cristopher.cardenas',
         avatar: '/static/mock-images/avatars/avatar_7.jpg',
         address: '279 Karolann Ports Apt. 774 - Prescott Valley, WV / 53905',
-        phone: '226-924-4058',
+        phoneNumber: '226-924-4058',
         email: 'lenna_bergnaum27@hotmail.com',
         lastActivity: '2021-10-19T12:32:23.496Z',
         status: 'online',
@@ -1010,7 +1010,7 @@ export const conversations: Conversation[] = [
         username: 'melanie.noble',
         avatar: '/static/mock-images/avatars/avatar_8.jpg',
         address: '96607 Claire Square Suite 591 - St. Louis Park, HI / 40802',
-        phone: '552-917-1454',
+        phoneNumber: '552-917-1454',
         email: 'luella.ryan33@gmail.com',
         lastActivity: '2021-10-18T11:32:23.496Z',
         status: 'online',
@@ -1022,7 +1022,7 @@ export const conversations: Conversation[] = [
         username: 'chase.day',
         avatar: '/static/mock-images/avatars/avatar_9.jpg',
         address: '9388 Auer Station Suite 573 - Honolulu, AK / 98024',
-        phone: '285-840-9338',
+        phoneNumber: '285-840-9338',
         email: 'joana.simonis84@gmail.com',
         lastActivity: '2021-10-17T10:32:23.496Z',
         status: 'away',
@@ -1034,7 +1034,7 @@ export const conversations: Conversation[] = [
         username: 'shawn.manning',
         avatar: '/static/mock-images/avatars/avatar_10.jpg',
         address: '47665 Adaline Squares Suite 510 - Blacksburg, NE / 53515',
-        phone: '306-269-2446',
+        phoneNumber: '306-269-2446',
         email: 'marjolaine_white94@gmail.com',
         lastActivity: '2021-10-16T09:32:23.496Z',
         status: 'away',
@@ -1046,7 +1046,7 @@ export const conversations: Conversation[] = [
         username: 'soren.durham',
         avatar: '/static/mock-images/avatars/avatar_11.jpg',
         address: '989 Vernice Flats Apt. 183 - Billings, NV / 04147',
-        phone: '883-373-6253',
+        phoneNumber: '883-373-6253',
         email: 'vergie_block82@hotmail.com',
         lastActivity: '2021-10-15T08:32:23.496Z',
         status: 'offline',
@@ -1061,7 +1061,7 @@ export const conversations: Conversation[] = [
         body: 'Tempora officiis consequuntur architecto nostrum autem nam adipisci.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-22T16:02:23.497Z',
+        createdAt: new Date('2021-10-22T16:02:23.497Z'),
         senderId: '8864c717-587d-472a-929a-8e5f298024da-0'
       },
       {
@@ -1069,7 +1069,7 @@ export const conversations: Conversation[] = [
         body: 'Voluptas sunt magni adipisci praesentium saepe.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-22T16:03:23.497Z',
+        createdAt: new Date('2021-10-22T16:03:23.497Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b10'
       },
       {
@@ -1077,7 +1077,7 @@ export const conversations: Conversation[] = [
         body: 'Ea architecto quas voluptates voluptas earum illo est vel rem.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-22T16:04:23.497Z',
+        createdAt: new Date('2021-10-22T16:04:23.497Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b11'
       },
       {
@@ -1085,7 +1085,7 @@ export const conversations: Conversation[] = [
         body: 'Ipsum expedita reiciendis ut.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-22T16:05:23.497Z',
+        createdAt: new Date('2021-10-22T16:05:23.497Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b9'
       },
       {
@@ -1093,7 +1093,7 @@ export const conversations: Conversation[] = [
         attachments: [],
         body: 'Architecto vel voluptatibus alias a aut non maxime ipsa voluptates.',
         contentType: 'text',
-        createdAt: '2021-10-22T16:06:23.497Z',
+        createdAt: new Date('2021-10-22T16:06:23.497Z'),
         senderId: '8864c717-587d-472a-929a-8e5f298024da-0'
       },
       {
@@ -1101,7 +1101,7 @@ export const conversations: Conversation[] = [
         body: 'Reiciendis enim officiis cupiditate eaque distinctio laudantium modi similique consequatur.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-22T18:32:23.497Z',
+        createdAt: new Date('2021-10-22T18:32:23.497Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b7'
       },
       {
@@ -1109,7 +1109,7 @@ export const conversations: Conversation[] = [
         body: 'Ab autem consequatur itaque mollitia ipsum cupiditate error repudiandae nobis.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-22T18:32:23.497Z',
+        createdAt: new Date('2021-10-22T18:32:23.497Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b8'
       }
     ]
@@ -1123,7 +1123,7 @@ export const conversations: Conversation[] = [
         name: 'Jaydon Frankie',
         username: 'jaydon.frankie',
         address: '40079 Stroman Knolls, New Ardella, GA 27241',
-        phone: '255-263-6444',
+        phoneNumber: '255-263-6444',
         email: 'jaydon_frankie@gmail.com',
         lastActivity: '2021-10-24T17:32:23.496Z',
         position: 'Full Stack Designer',
@@ -1135,7 +1135,7 @@ export const conversations: Conversation[] = [
         username: 'soren.durham',
         avatar: '/static/mock-images/avatars/avatar_11.jpg',
         address: '989 Vernice Flats Apt. 183 - Billings, NV / 04147',
-        phone: '883-373-6253',
+        phoneNumber: '883-373-6253',
         email: 'vergie_block82@hotmail.com',
         lastActivity: '2021-10-15T08:32:23.496Z',
         status: 'offline',
@@ -1150,7 +1150,7 @@ export const conversations: Conversation[] = [
         body: 'Distinctio architecto debitis eligendi consequatur unde id modi accusantium possimus.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T18:31:23.497Z',
+        createdAt: new Date('2021-10-25T18:31:23.497Z'),
         senderId: '8864c717-587d-472a-929a-8e5f298024da-0'
       },
       {
@@ -1158,7 +1158,7 @@ export const conversations: Conversation[] = [
         body: 'At ut voluptate accusantium.',
         contentType: 'text',
         attachments: [],
-        createdAt: '2021-10-25T18:31:23.497Z',
+        createdAt: new Date('2021-10-25T18:31:23.497Z'),
         senderId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b11'
       }
     ]

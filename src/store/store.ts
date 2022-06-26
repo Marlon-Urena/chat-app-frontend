@@ -3,12 +3,13 @@ import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { rootReducer } from './reducers';
+import chatMiddleware from './middlewares/chatMiddleware';
 
 // ----------------------------------------------------------------------
 
 const store = configureStore({
   reducer: rootReducer,
-  middleware: [thunk, logger],
+  middleware: [thunk, logger, chatMiddleware],
   devTools: process.env.NODE_ENV !== 'production'
 });
 

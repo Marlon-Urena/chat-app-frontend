@@ -23,7 +23,7 @@ import { fData } from '../../utils/formatNumber';
 import UploadAvatar from '../upload/UploadAvatar';
 import countries from './countries';
 import { useAppDispatch, useAppSelector } from '../../store/store';
-import { getUser, updateProfilePhoto, updateUser } from '../../store/authentication/thunks';
+import { getUser, updateProfilePhoto, updateUser } from '../../store/user/thunks';
 
 export default function AccountGeneral() {
   const { enqueueSnackbar } = useSnackbar();
@@ -77,6 +77,7 @@ export default function AccountGeneral() {
       if (currentUser) {
         dispatch(
           updateUser({
+            uid: currentUser.uid,
             username: currentUser.username,
             email: currentUser.email,
             ...values

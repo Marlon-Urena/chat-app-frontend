@@ -26,12 +26,14 @@ const RootStyle = styled('div')(({ theme }) => ({
 interface ChatMessageInputProps {
   disabled: boolean;
   conversationId: string;
+  uid: string;
   onSend: (message: NewMessage) => void;
 }
 
 export default function ChatMessageInput({
   disabled,
   conversationId,
+  uid,
   onSend,
   ...other
 }: ChatMessageInputProps) {
@@ -53,13 +55,16 @@ export default function ChatMessageInput({
     }
     if (onSend) {
       onSend({
+        requestType: 1,
         conversationId,
-        id: uuidv4(),
-        body: message,
-        contentType: 'text',
-        attachments: [],
-        createdAt: new Date().toISOString(),
-        senderId: '8864c717-587d-472a-929a-8e5f298024da-0'
+        message: {
+          id: uuidv4(),
+          body: message,
+          contentType: 'text',
+          attachments: [],
+          createdAt: new Date(),
+          senderId: uid
+        }
       });
     }
     return setMessage('');
