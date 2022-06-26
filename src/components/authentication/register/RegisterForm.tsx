@@ -8,7 +8,7 @@ import eyeOffFill from '@iconify/icons-eva/eye-off-fill';
 import { Alert, IconButton, InputAdornment, Stack, TextField } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { useAppDispatch, useAppSelector } from '../../../store/store';
-import { register } from '../../../store/authentication/thunks';
+import { register } from '../../../store/user/thunks';
 
 // ----------------------------------------------------------------------
 

@@ -10,9 +10,10 @@ import { Conversation } from '../../store/chat/types';
 
 interface ChatMessageListProps {
   conversation: Conversation;
+  currentUserId: string;
 }
 
-export default function ChatMessageList({ conversation }: ChatMessageListProps) {
+export default function ChatMessageList({ conversation, currentUserId }: ChatMessageListProps) {
   const scrollRef = useRef<HTMLDivElement>();
   const [openLightbox, setOpenLightbox] = useState(false);
   const [selectedImage, setSelectedImage] = useState<number>(-1);
@@ -44,6 +45,7 @@ export default function ChatMessageList({ conversation }: ChatMessageListProps) 
             key={message.id}
             message={message}
             conversation={conversation}
+            currentUserId={currentUserId}
             onOpenLightbox={handleOpenLightbox}
           />
         ))}

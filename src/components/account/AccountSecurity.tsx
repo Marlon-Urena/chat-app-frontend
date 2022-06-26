@@ -21,12 +21,7 @@ import { LoadingButton } from '@mui/lab';
 import { useEffect, useState } from 'react';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
 import { useAppDispatch, useAppSelector } from '../../store/store';
-import {
-  getUser,
-  updatePassword,
-  updateEmail,
-  updateUsername
-} from '../../store/authentication/thunks';
+import { getUser, updatePassword, updateEmail, updateUsername } from '../../store/user/thunks';
 import useAuth from '../../hooks/useAuth';
 
 // ----------------------------------------------------------------------
@@ -92,7 +87,7 @@ export default function AccountSecurity() {
     newUsername: Yup.string()
       .min(1, 'Username is too short!')
       .max(30, 'Username is too long!')
-      .matches(/^[a-zA-Z0-9._]+$/, 'Username is not valid.'),
+      .matches(/^[a-zA-Z\d._]+$/, 'Username is not valid.'),
     currentPassword: Yup.string()
   });
 

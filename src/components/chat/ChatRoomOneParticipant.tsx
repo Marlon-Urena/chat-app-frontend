@@ -99,7 +99,7 @@ export default function ChatRoomOneParticipant({
           </Stack>
           <Stack direction="row" spacing={1}>
             <RowIconStyle icon={phoneFill} />
-            <RowTextStyle>{participant.phone}</RowTextStyle>
+            <RowTextStyle>{participant.phoneNumber}</RowTextStyle>
           </Stack>
           <Stack direction="row" spacing={1}>
             <RowIconStyle icon={emailFill} />

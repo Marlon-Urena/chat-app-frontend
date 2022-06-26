@@ -21,7 +21,7 @@ import MenuPopover from '../../components/MenuPopover';
 import BadgeStatus from '../../components/BadgeStatus';
 // mocks
 import { useAppDispatch, useAppSelector } from '../../store/store';
-import { getUser, logout } from '../../store/authentication/thunks';
+import { getUser, logout } from '../../store/user/thunks';
 import useAuth from '../../hooks/useAuth';
 
 // ----------------------------------------------------------------------

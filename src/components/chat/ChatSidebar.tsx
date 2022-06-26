@@ -8,10 +8,10 @@ import arrowIosForwardFill from '@iconify/icons-eva/arrow-ios-forward-fill';
 // material
 import { styled, useTheme } from '@mui/material/styles';
 import { Box, Drawer, IconButton, Stack, Typography, useMediaQuery } from '@mui/material';
+// utils
+import { getContacts } from 'src/apis/chatAPI';
 // store
 import { useAppSelector } from '../../store/store';
-// utils
-import axios from '../../utils/axios';
 import { Contact } from '../../store/chat/types';
 //
 import { MHidden, MIconButton } from '../@material-extend';
@@ -49,10 +49,6 @@ const ToggleButtonStyle = styled((props: ToggleButtonStyleProps) => (
 
 // ----------------------------------------------------------------------
 
-interface ContactData {
-  results: Contact[];
-}
-
 export default function ChatSidebar() {
   const theme = useTheme();
   const navigate = useNavigate();
@@ -62,7 +58,9 @@ export default function ChatSidebar() {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<Contact[]>([]);
   const [isSearchFocused, setSearchFocused] = useState(false);
-  const { conversations, activeConversationId } = useAppSelector((state) => state.chat);
+  const { conversations, activeConversationId, currentUserId } = useAppSelector(
+    (state) => state.chat
+  );
 
   const displayResults = searchQuery && isSearchFocused;
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
@@ -103,10 +101,8 @@ export default function ChatSidebar() {
       const { value } = event.target;
       setSearchQuery(value);
       if (value) {
-        const response = await axios.get<ContactData>('/api/chat/search', {
-          params: { query: value }
-        });
-        setSearchResults(response.data.results);
+        const response = await getContacts(value);
+        setSearchResults(response.data);
       } else {
         setSearchResults([]);
       }
@@ -149,7 +145,7 @@ export default function ChatSidebar() {
             />
           </MIconButton>
           {!isCollapse && (
-            <MIconButton to="/dashboard/chat/new" component={RouterLink}>
+            <MIconButton to="/dashboard/chat/new/" component={RouterLink}>
               <Icon icon={editFill} width={20} height={20} />
             </MIconButton>
           )}
@@ -171,6 +167,7 @@ export default function ChatSidebar() {
             conversations={conversations}
             isOpenSidebar={openSidebar}
             activeConversationId={activeConversationId}
+            currentUserId={currentUserId}
             sx={{ ...(isSearchFocused && { display: 'none' }) }}
           />
         ) : (

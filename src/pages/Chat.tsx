@@ -3,12 +3,12 @@ import { Card, Container } from '@mui/material';
 import { styled } from '@mui/material/styles';
 // components
 import { useEffect } from 'react';
+import { getContacts, getConversations } from 'src/store/chat/thunks';
 import Page from '../components/Page';
 import ChatWindow from '../components/chat/ChatWindow';
 import ChatSidebar from '../components/chat/ChatSidebar';
 // store
 import { useAppDispatch } from '../store/store';
-import { getContacts, getConversations } from '../store/chat/reducer';
 
 // ----------------------------------------------------------------------
 

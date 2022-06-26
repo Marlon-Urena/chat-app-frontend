@@ -47,6 +47,7 @@ const getDetails = (conversation: Conversation, currentUserId: string) => {
 interface ChatConversationItemProps {
   isSelected?: boolean;
   conversation: Conversation;
+  currentUserId: string;
   isOpenSidebar?: boolean;
   onSelectConversation: () => void;
 }
@@ -54,10 +55,11 @@ interface ChatConversationItemProps {
 export default function ChatConversationItem({
   isSelected,
   conversation,
+  currentUserId,
   isOpenSidebar,
   onSelectConversation
 }: ChatConversationItemProps) {
-  const details = getDetails(conversation, '8864c717-587d-472a-929a-8e5f298024da-0');
+  const details = getDetails(conversation, currentUserId);
 
   const displayLastActivity = last(conversation.messages)?.createdAt ?? '';
   const isGroup = details.otherParticipants.length > 1;
